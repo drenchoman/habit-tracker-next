@@ -1,4 +1,12 @@
+'use client';
+import { useState, useEffect } from 'react';
+import Firebase from '../../../firebase/firebase';
 import Link from 'next/link';
+
+const formatAuthUser = (user) => ({
+  uid: user.uid,
+  email: user.email,
+});
 
 export default function Home() {
   return (
