@@ -54,7 +54,7 @@ export default function Home() {
               placeholder="hunter2"
             />
           </div>
-          {error ? <span>{error}</span> : ''}
+          {error ? <span className="text-center">{error}</span> : ''}
           <button
             className="bg-blue-400 hover:bg-blue-600 my-2 mx-4 py-2 px-4 rounded"
             type="submit"

@@ -9,7 +9,7 @@ export default async function signIn(email, password) {
   try {
     result = await signInWithEmailAndPassword(auth, email, password);
   } catch (e) {
-    error = e;
+    error = 'Something went wrong.';
   }
   return { result, error };
 }
