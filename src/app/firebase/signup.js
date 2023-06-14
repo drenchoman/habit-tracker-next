@@ -16,7 +16,14 @@ export default async function signUp(email, password) {
       password
     );
   } catch (e) {
-    error = e;
+    if (e.code == 'auth/invalid-email') {
+      error = 'Invalid Email address';
+    } else if (e.code == 'auth/email-already-in-use') {
+      error = 'Email already in use';
+    } else {
+      console.log(e);
+      error = 'Something went wrong';
+    }
   }
   return { result, error };
 }

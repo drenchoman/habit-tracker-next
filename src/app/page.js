@@ -6,6 +6,7 @@ import signUp from './firebase/signup';
 export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const router = useRouter();
 
   const handleForm = async (event) => {
@@ -13,12 +14,13 @@ export default function Home() {
     const { result, error } = await signUp(email, password);
 
     if (error) {
+      setError(error);
       return console.error(error);
     }
 
     // else successful
     console.log(result);
-    return router.push('/admin');
+    // return router.push('/admin');
   };
 
   return (
@@ -48,9 +50,11 @@ export default function Home() {
               name="password"
               type="password"
               id="password"
+              autoComplete="on"
               placeholder="hunter2"
             />
           </div>
+          {error ? <span>{error}</span> : ''}
           <button
             className="bg-blue-400 hover:bg-blue-600 my-2 mx-4 py-2 px-4 rounded"
             type="submit"
