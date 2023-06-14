@@ -1,9 +1,21 @@
 'use client';
-import { useState, useEffect } from 'react';
-import Firebase from '../firebase/config';
 import Link from 'next/link';
+import React from 'react';
+import { useAuthContext } from '../context/AuthContext';
+import { useRouter } from 'next/router';
 
-export default function useFirbaseAuth() {
+export default function Admin() {
+  const { user } = React.useAuthContext();
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (user == null) {
+      router.push('/');
+    } else {
+      console.log(user);
+    }
+  }, [user]);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
@@ -14,6 +26,7 @@ export default function useFirbaseAuth() {
         >
           Names
         </Link>
+        <span>Hello</span>
 
         <Link
           className="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 rounded my-2 mx-2"
