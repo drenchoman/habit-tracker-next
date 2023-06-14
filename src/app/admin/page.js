@@ -3,15 +3,7 @@ import { useState, useEffect } from 'react';
 import Firebase from '../firebase/config';
 import Link from 'next/link';
 
-const formatAuthUser = (user) => ({
-  uid: user.uid,
-  email: user.email,
-});
-
 export default function useFirbaseAuth() {
-  const [authUser, setAuthUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
