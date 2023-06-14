@@ -24,21 +24,26 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
-        <form onSubmit={handleForm}>
-          <div>
-            <label htmlFor="email">Email</label>
+        <form className="flex flex-col" onSubmit={handleForm}>
+          <div className="flex flex-col my-2">
+            <label className="my-1" htmlFor="email">
+              Email
+            </label>
             <input
               onChange={(e) => setEmail(e.target.value)}
               placeholder="example@example.com"
-              className="bg-blue-400"
+              className="bg-blue-400 placeholder-gray-300 p-2"
               name="email"
               type="email"
               id="email"
             />
           </div>
-          <div>
-            <label htmlFor="password">Password</label>
+          <div className="flex flex-col my-2">
+            <label className="my-1" htmlFor="password">
+              Password
+            </label>
             <input
+              className="bg-blue-400 placeholder-gray-300 p-2"
               onChange={(e) => setPassword(e.target.value)}
               name="password"
               type="password"
