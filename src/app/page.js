@@ -1,13 +1,25 @@
 'use client';
+import React from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuthContext } from './context/AuthContext';
+
 import signUp from './firebase/signup';
 
 export default function Home() {
+  const { user } = useAuthContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
+
+  // If logged in / push to admin page
+
+  React.useEffect(() => {
+    if (user) {
+      router.push('/admin');
+    }
+  });
 
   const handleForm = async (event) => {
     event.preventDefault();
