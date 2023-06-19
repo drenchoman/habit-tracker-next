@@ -18,7 +18,11 @@ const names = [
 
 export default function page() {
   const handleForm = async (data) => {
-    console.log(data);
+    const { result, error } = await addData('users', 'user-id', data);
+    if (error) {
+      return console.log(error);
+    }
+    console.log(result);
   };
 
   return (
