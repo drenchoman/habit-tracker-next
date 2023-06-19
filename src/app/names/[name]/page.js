@@ -4,6 +4,7 @@ export default function page({ params }) {
   const capitalise = (word) =>
     word.charAt(0).toUpperCase() + word.slice(1);
   const name = capitalise(params.name);
+
   return (
     <div>
       <h1>Home page of {name}</h1>
