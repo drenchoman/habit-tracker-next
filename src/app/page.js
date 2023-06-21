@@ -3,8 +3,7 @@ import React from 'react';
 import { useAuthContext } from './context/AuthContext';
 import { useRouter } from 'next/navigation';
 
-import SignIn from './components/signin';
-import Signup from './components/signup';
+import Link from 'next/link';
 export default function Home() {
   const { user } = useAuthContext();
 
@@ -19,9 +18,20 @@ export default function Home() {
   });
 
   return (
-    <main className="flex min-h-screen flex-row items-center justify-between p-24">
-      <SignIn />
-      <Signup />
+    <main className="flex min-h-screen flex-col items-center justify-center  p-24">
+      <h1 className="text-2xl py-2">Habit Tracker</h1>
+      <div className="flex  flex-row items-center">
+        <Link href="/signin">
+          <button className="bg-blue-400 hover:bg-blue-700 rounded py-2 px-4 m-2">
+            Sign in
+          </button>
+        </Link>
+        <Link href="/signup">
+          <button className="bg-red-400 hover:bg-red-700 rounded py-2 px-4 m-2">
+            Register
+          </button>
+        </Link>
+      </div>
     </main>
   );
 }
