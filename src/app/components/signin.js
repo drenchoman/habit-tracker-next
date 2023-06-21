@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import signIn from '../firebase/signin';
+import Link from 'next/link';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -21,26 +22,26 @@ export default function SignIn() {
   return (
     <div>
       <form className="flex flex-col" onSubmit={handleForm}>
-        <div className="flex flex-col my-2">
+        <div className="flex flex-col my-1">
           <label className="my-1" htmlFor="email">
             Email
           </label>
           <input
             onChange={(e) => setEmail(e.target.value)}
             placeholder="example@example.com"
-            className="bg-blue-400
-      placeholder-gray-300 p-2"
+            className="bg-blue-200 placeholder:text-black text-black
+       p-2 my-1"
             name="email"
             type="email"
             id="email"
           />
         </div>
-        <div className="flex flex-col my-2">
+        <div className="flex flex-col my-1">
           <label className="my-1" htmlFor="password">
             Password
           </label>
           <input
-            className="bg-blue-400 placeholder-gray-300 p-2"
+            className="bg-blue-200 placeholder:text-black text-black p-2 my-1"
             onChange={(e) => setPassword(e.target.value)}
             name="password"
             type="password"
@@ -55,6 +56,10 @@ export default function SignIn() {
           type="submit"
         >
           Sign in
+        </button>
+
+        <button className="bg-red-400 hover:bg-red-700 my-2 mx-4 py-2 px-4 rounded">
+          <Link href="/"> Home </Link>
         </button>
       </form>
     </div>

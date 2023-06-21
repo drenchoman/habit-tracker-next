@@ -3,16 +3,10 @@ import Link from 'next/link';
 import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
-import signout from '../firebase/signout';
-
+import Signout from '../components/signout';
 export default function Admin() {
   const { user } = useAuthContext();
   const router = useRouter();
-
-  const handleClick = () => {
-    signout();
-    router.push('/');
-  };
 
   React.useEffect(() => {
     if (user == null) {
@@ -40,7 +34,7 @@ export default function Admin() {
           Back
         </Link>
       </div>
-      <button onClick={handleClick}>Sign out</button>
+      <Signout />
     </main>
   );
 }

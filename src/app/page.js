@@ -18,19 +18,16 @@ export default function Home() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center  p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center  p-12">
       <h1 className="text-2xl py-2">Habit Tracker</h1>
       <div className="flex  flex-row items-center">
-        <Link href="/signin">
-          <button className="bg-blue-400 hover:bg-blue-700 rounded py-2 px-4 m-2">
-            Sign in
-          </button>
-        </Link>
-        <Link href="/signup">
-          <button className="bg-red-400 hover:bg-red-700 rounded py-2 px-4 m-2">
-            Register
-          </button>
-        </Link>
+        <button className="bg-blue-400 hover:bg-blue-700 rounded py-2 px-4 m-2">
+          <Link href="/signin"> Sign in </Link>
+        </button>
+
+        <button className="bg-red-400 hover:bg-red-700 rounded py-2 px-4 m-2">
+          <Link href="/signup"> Register</Link>
+        </button>
       </div>
     </main>
   );
