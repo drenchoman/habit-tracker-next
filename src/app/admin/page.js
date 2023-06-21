@@ -12,7 +12,7 @@ export default function Admin() {
     if (user == null) {
       router.push('/');
     } else {
-      console.log(user);
+      console.log(user.uid);
     }
   }, [user]);
 

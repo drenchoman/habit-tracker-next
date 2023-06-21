@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import addData from '../firebase/firestore/addData';
+import { useAuthContext } from '../context/AuthContext';
 const names = [
   {
     id: 1,
@@ -16,9 +17,17 @@ const names = [
   },
 ];
 
-export default function page() {
+export default function Page() {
+  const { user } = useAuthContext();
+
   const handleForm = async (data) => {
-    const { result, error } = await addData('users', 'user-id', data);
+    const { result, error } = await addData(
+      'users',
+      user.uid,
+      'dates',
+      'w6QO0Js8w5bToBKP9P1h',
+      data
+    );
     if (error) {
       return console.log(error);
     }
