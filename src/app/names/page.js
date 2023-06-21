@@ -22,10 +22,8 @@ export default function Page() {
 
   const handleForm = async (data) => {
     const { result, error } = await addData(
-      'users',
-      user.uid,
-      'dates',
-      'w6QO0Js8w5bToBKP9P1h',
+      'habits',
+      'DHUVKLfPvVwC6c7ew2vj',
       data
     );
     if (error) {
