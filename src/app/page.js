@@ -13,7 +13,7 @@ export default function Home() {
 
   React.useEffect(() => {
     if (user) {
-      router.push('/admin');
+      router.push('/home');
     }
   });
 
