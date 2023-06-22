@@ -8,7 +8,10 @@ export default async function updateHabit(userid, habitid, data) {
   let error = null;
 
   try {
-    result = await updateDoc(doc(db, 'users', userid, habitid), data);
+    result = await updateDoc(
+      doc(db, 'users', userid, 'habits', habitid),
+      data
+    );
   } catch (e) {
     error = e;
   }

@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import addHabit from '../firebase/firestore/addHabit';
+import updateHabit from '../firebase/firestore/updateHabit';
 import { v4 as uuidv4 } from 'uuid';
 import { useAuthContext } from '../context/AuthContext';
 const names = [
@@ -18,8 +19,22 @@ const names = [
   },
 ];
 
+const test = { age: 42, name: 'Bob' };
+
 export default function Page() {
   const { user } = useAuthContext();
+
+  const handleUpdateTest = async (data) => {
+    const { result, error } = await updateHabit(
+      user.uid,
+      'ae56417e-1304-4b5b-8af8-9b12d5ed6fa8',
+      test
+    );
+    if (error) {
+      return console.log(error);
+    }
+    console.log(result);
+  };
 
   const handleForm = async (data) => {
     const { result, error } = await addHabit(
@@ -54,6 +69,7 @@ export default function Page() {
           </div>
         ))}
       </div>
+      <button onClick={handleUpdateTest}>Test</button>
       <div className="text-center ">
         <Link
           className="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 rounded my-2 mx-2"
