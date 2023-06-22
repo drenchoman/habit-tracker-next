@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
-import addData from '../firebase/firestore/addHabit';
+import addHabit from '../firebase/firestore/addHabit';
+import { v4 as uuidv4 } from 'uuid';
 import { useAuthContext } from '../context/AuthContext';
 const names = [
   {
@@ -21,7 +22,11 @@ export default function Page() {
   const { user } = useAuthContext();
 
   const handleForm = async (data) => {
-    const { result, error } = await addData(user.uid, data);
+    const { result, error } = await addHabit(
+      user.uid,
+      uuidv4(),
+      data
+    );
     if (error) {
       return console.log(error);
     }
