@@ -27,8 +27,17 @@ let test = {
 export default function Page() {
   const { user } = useAuthContext();
 
+  const getDate = () => {
+    let today = new Date();
+    let d = today.getDate();
+    let m = today.getMonth();
+    let y = today.getFullYear();
+    let date = `${d}${m}${y}`;
+    return date;
+  };
+
   const handleUpdateTest = async (data) => {
-    let today = Date.now();
+    let today = getDate();
     test = { ...test, [today]: { done: true } };
 
     const { result, error } = await updateHabit(
