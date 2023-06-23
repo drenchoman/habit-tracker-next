@@ -19,12 +19,18 @@ const names = [
   },
 ];
 
-const test = { age: 42, name: 'Bob' };
+let test = {
+  age: 42,
+  name: 'Bob',
+};
 
 export default function Page() {
   const { user } = useAuthContext();
 
   const handleUpdateTest = async (data) => {
+    let today = Date.now();
+    test = { ...test, [today]: { done: true } };
+
     const { result, error } = await updateHabit(
       user.uid,
       'ae56417e-1304-4b5b-8af8-9b12d5ed6fa8',
