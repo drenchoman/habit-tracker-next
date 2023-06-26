@@ -17,23 +17,17 @@ export default function Admin() {
   }, [user]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <Link
-          className="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 rounded my-2 mx-2"
-          href="/names"
-        >
-          Names
-        </Link>
-        <span>Hello</span>
-
-        <Link
-          className="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 rounded my-2 mx-2"
-          href="/"
-        >
-          Back
-        </Link>
+    <main className="flex min-h-screen flex-col items-center justify-center p-8">
+      <div className="flex flex-col items-center">
+        <h2 className="text-3xl text-center font-bold my-2">
+          Getting started is easy
+        </h2>
+        <p className="m-2">Tap below to add your first habit</p>
+        <button className="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 m-2 rounded">
+          <Link href="/home/add">Add +</Link>
+        </button>
       </div>
+
       <Signout />
     </main>
   );
