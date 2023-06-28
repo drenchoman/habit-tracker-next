@@ -20,9 +20,9 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center  p-8">
       <h1 className="text-2xl py-2 text-center">Habit Tracker</h1>
-      <p>
-        We are what we repeatedly do. Excellence then, is not an act,
-        but a habit
+      <p className="my-2 text-center w-80">
+        We are what we repeatedly do. Excellence then, is not an act
+        but a habit.
       </p>
       <div className="flex  flex-row items-center">
         <button className="bg-blue-400 hover:bg-blue-700 rounded py-2 px-4 m-2">
