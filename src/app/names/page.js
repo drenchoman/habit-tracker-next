@@ -20,10 +20,6 @@ const names = [
   },
 ];
 
-let test = {
-  dates: {},
-};
-
 export default function Page() {
   const { user } = useAuthContext();
 
@@ -38,10 +34,14 @@ export default function Page() {
 
   const handleUpdateTest = async (data) => {
     let today = getDate();
-    test.dates = { [today]: { done: true } };
+    let test = { 10091995: false };
+    // test.date = [today];
+    // test.done = false;
+    // let test = { [today]: { done: false } };
 
     const { result, error } = await addEntry(
-      'ae56417e-1304-4b5b-8af8-9b12d5ed6fa8',
+      user.uid,
+      'MF7wMoxbo6xvGynHb1Zl',
       test
     );
     if (error) {
