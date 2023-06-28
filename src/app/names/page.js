@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import addHabit from '../firebase/firestore/addHabit';
 import updateHabit from '../firebase/firestore/updateHabit';
+import addEntry from '../firebase/firestore/addEntry';
 import { v4 as uuidv4 } from 'uuid';
 import { useAuthContext } from '../context/AuthContext';
 const names = [
@@ -20,8 +21,7 @@ const names = [
 ];
 
 let test = {
-  age: 42,
-  name: 'Bob',
+  dates: {},
 };
 
 export default function Page() {
@@ -38,10 +38,9 @@ export default function Page() {
 
   const handleUpdateTest = async (data) => {
     let today = getDate();
-    test = { ...test, [today]: { done: true } };
+    test.dates = { [today]: { done: true } };
 
-    const { result, error } = await updateHabit(
-      user.uid,
+    const { result, error } = await addEntry(
       'ae56417e-1304-4b5b-8af8-9b12d5ed6fa8',
       test
     );
