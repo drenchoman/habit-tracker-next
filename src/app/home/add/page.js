@@ -24,7 +24,7 @@ export default function Admin() {
           <div className="flex flex-col my-2">
             <label htmlFor="name">Habit Name</label>
             <input
-              className="text-black"
+              className="text-black placeholder:black"
               name="name"
               id="name"
               type="text"
@@ -33,7 +33,7 @@ export default function Admin() {
           <div className="flex flex-col my-2">
             <label htmlFor="desc">Description</label>
             <input
-              className="text-black"
+              className="text-black placeholder:black"
               name="desc"
               id="desc"
               type="text"
