@@ -18,7 +18,7 @@ export default function Admin() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log('test');
+    console.log(user.uid);
     const { result, error } = await addHabit(user.uid, data);
     if (error) {
       return console.log(error);

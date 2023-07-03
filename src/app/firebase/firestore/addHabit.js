@@ -4,6 +4,7 @@ import {
   doc,
   setDoc,
   collection,
+  addDoc,
 } from 'firebase/firestore';
 
 const db = getFirestore(firebase_app);
@@ -12,10 +13,12 @@ const db = getFirestore(firebase_app);
 export default async function addHabit(userid, data) {
   let result = null;
   let error = null;
-  const ref = collection(db, `users/${userid}/habits`);
 
   try {
-    result = await setDoc(ref, data);
+    result = await addDoc(
+      collection(db, 'users', userid, 'habits'),
+      data
+    );
   } catch (e) {
     error = e;
   }
