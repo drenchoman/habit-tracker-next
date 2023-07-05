@@ -17,7 +17,7 @@ export default function SignIn() {
       setError(error);
       return console.error(error);
     } // else successful console.log(result); return
-    router.push('/admin');
+    router.push('/home');
   };
   return (
     <div>
