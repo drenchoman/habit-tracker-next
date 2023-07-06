@@ -8,21 +8,22 @@ import getHabits from '../firebase/firestore/getHabits';
 export default function Admin() {
   const { user } = useAuthContext();
   const router = useRouter();
-
-  const getHab = async () => {
-    const { result, error } = await getHabits(user.uid);
-    if (error) {
-      return console.log(error);
-    }
-    console.log('test', result);
-  };
+  const [habits, setHabits] = React.useState([]);
 
   React.useEffect(() => {
     if (user == null) {
       router.push('/');
     } else {
+      const getHab = async () => {
+        const { result, error } = await getHabits(user.uid);
+        if (error) {
+          return console.log(error);
+        }
+        setHabits(result);
+      };
+      // may have to be await getHab?
       getHab();
-      console.log(user.uid);
+      // console.log(habits);
     }
   }, [user]);
 
