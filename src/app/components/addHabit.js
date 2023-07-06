@@ -15,6 +15,7 @@ export default function AddHabit() {
       name: name,
       description: desc,
       frequency: freq,
+      currentStreak: 0,
     };
 
     const { result, error } = await addHabit(user.uid, data);

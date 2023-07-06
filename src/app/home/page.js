@@ -5,10 +5,13 @@ import { useAuthContext } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Signout from '../components/signout';
 import getHabits from '../firebase/firestore/getHabits';
+import GetStarted from '../components/getStarted';
+import IncrementHabit from '../components/incrementHabit';
 export default function Admin() {
   const { user } = useAuthContext();
   const router = useRouter();
   const [habits, setHabits] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     if (user == null) {
@@ -20,25 +23,21 @@ export default function Admin() {
           return console.log(error);
         }
         setHabits(result);
+        setLoading(false);
       };
       // may have to be await getHab?
       getHab();
-      // console.log(habits);
     }
   }, [user]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <div className="flex flex-col items-center">
-        <h2 className="text-3xl text-center font-bold my-2">
-          Getting started is easy
-        </h2>
-        <p className="m-2">Tap below to add your first habit</p>
-        <button className="bg-blue-400 hover:bg-blue-700 text-white py-2 px-4 m-2 rounded">
-          <Link href="/home/add">Add +</Link>
-        </button>
-      </div>
-
+      {loading && <div>loading</div>}
+      {habits.length == 0 ? (
+        <GetStarted />
+      ) : (
+        <IncrementHabit habits={habits} />
+      )}
       <Signout />
     </main>
   );
