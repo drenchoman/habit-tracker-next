@@ -10,7 +10,7 @@ export default function Admin() {
   const router = useRouter();
 
   const getHab = async () => {
-    const { result, error } = await getHabits('users', user.uid);
+    const { result, error } = await getHabits(user.uid);
     if (error) {
       return console.log(error);
     }
