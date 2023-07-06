@@ -4,14 +4,24 @@ import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import Signout from '../components/signout';
+import getHabits from '../firebase/firestore/getHabits';
 export default function Admin() {
   const { user } = useAuthContext();
   const router = useRouter();
+
+  const getHab = async () => {
+    const { result, error } = await getHabits('users', user.uid);
+    if (error) {
+      return console.log(error);
+    }
+    console.log('test', result);
+  };
 
   React.useEffect(() => {
     if (user == null) {
       router.push('/');
     } else {
+      getHab();
       console.log(user.uid);
     }
   }, [user]);
