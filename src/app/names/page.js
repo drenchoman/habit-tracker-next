@@ -1,8 +1,7 @@
 'use client';
 import Link from 'next/link';
-import addHabit from '../firebase/firestore/addHabit';
 import updateHabit from '../firebase/firestore/updateHabit';
-import addEntry from '../firebase/firestore/addEntry';
+import addEntry from '../firebase/firestore/addEntryNoCollection';
 import { v4 as uuidv4 } from 'uuid';
 import { useAuthContext } from '../context/AuthContext';
 const names = [
@@ -22,33 +21,6 @@ const names = [
 
 export default function Page() {
   const { user } = useAuthContext();
-
-  const getDate = () => {
-    let today = new Date();
-    let d = today.getDate();
-    let m = today.getMonth();
-    let y = today.getFullYear();
-    let date = `${d}${m}${y}`;
-    return date;
-  };
-
-  const handleUpdateTest = async (data) => {
-    let today = getDate();
-    let test = { 10091995: false };
-    // test.date = [today];
-    // test.done = false;
-    // let test = { [today]: { done: false } };
-
-    const { result, error } = await addEntry(
-      user.uid,
-      'MF7wMoxbo6xvGynHb1Zl',
-      test
-    );
-    if (error) {
-      return console.log(error);
-    }
-    console.log(result);
-  };
 
   const handleForm = async (data) => {
     const { result, error } = await addHabit(

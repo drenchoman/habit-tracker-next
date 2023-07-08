@@ -3,26 +3,27 @@ import {
   getFirestore,
   doc,
   setDoc,
+  addDoc,
+  getDocs,
   updateDoc,
   arrayUnion,
+  collection,
 } from 'firebase/firestore';
 
 const db = getFirestore(firebase_app);
 
-// should add own seperate collection for dates.
-// structures like date: {
-// done: true;
-//
-
-export default async function addEntry(userid, habitid, data) {
+export default async function addEntryNoCollection(
+  userid,
+  habitid,
+  data
+) {
   let result = null;
   let error = null;
+
   try {
-    result = await updateDoc(
-      doc(db, 'users', userid, 'habits', habitid),
-      {
-        dates: arrayUnion(data),
-      }
+    result = await addDoc(
+      collection(db, 'users', userid, 'habits', habitid, 'dates'),
+      data
     );
   } catch (e) {
     error = e;
