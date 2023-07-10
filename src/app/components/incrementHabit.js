@@ -1,6 +1,7 @@
 'use client';
 import checkCollectionExists from '../firebase/firestore/checkCollectionExists';
 import getDate from '../utilities/getDate';
+import addEntryNoCollection from '../firebase/firestore/addEntryNoCollection';
 import { useAuthContext } from '../context/AuthContext';
 
 export default function IncrementHabit({ habits }) {
@@ -9,10 +10,10 @@ export default function IncrementHabit({ habits }) {
   const addDateEntryToHabit = async (habitid) => {
     let today = getDate();
 
-    let data = { [today]: false };
+    let data = { status: false, notes: 'test', date: today };
     // let test = { 862023: false };
     // check if collection id for dates exists and adds data
-    const { result, error } = await checkCollectionExists(
+    const { result, error } = await addEntryNoCollection(
       user.uid,
       habitid,
       data

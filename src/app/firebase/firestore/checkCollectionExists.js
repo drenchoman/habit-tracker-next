@@ -37,11 +37,10 @@ export default async function checkCollectionExists(
       result = await addEntryNoCollection(userid, habitid, data);
     } else {
       // Collection exists, add entry
-      let dateid = document[0].id;
+      // let dateid = document[0].id;
       result = await addEntryExistingCollection(
         userid,
         habitid,
-        dateid,
         data
       );
     }

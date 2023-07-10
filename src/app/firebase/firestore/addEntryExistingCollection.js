@@ -11,7 +11,6 @@ const db = getFirestore(firebase_app);
 export default async function addEntryExistingCollection(
   userid,
   habitid,
-  dateid,
   data
 ) {
   let result = null;
@@ -20,15 +19,7 @@ export default async function addEntryExistingCollection(
   try {
     console.log('testing');
     result = await updateDoc(
-      collection(
-        db,
-        'users',
-        userid,
-        'habits',
-        habitid,
-        'dates',
-        dateid
-      ),
+      collection(db, 'users', userid, 'habits', habitid, 'dates'),
       data,
       { merge: true }
     );
