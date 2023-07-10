@@ -7,9 +7,9 @@ export default function IncrementHabit({ habits }) {
   const { user } = useAuthContext();
 
   const addDateEntryToHabit = async (habitid) => {
-    let today = getDate();
+    let { date, timestamp } = getDate();
 
-    let data = { status: false, notes: 'test', date: today };
+    let data = { status: true, notes: 'test', date, timestamp };
 
     const { result, error } = await addHabitEntry(
       user.uid,

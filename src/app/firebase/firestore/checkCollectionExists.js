@@ -9,6 +9,8 @@ import addEntryExistingCollection from './addEntryExistingCollection';
 
 const db = getFirestore(firebase_app);
 
+// NO LONGER USED
+
 export default async function checkCollectionExists(
   userid,
   habitid,
