@@ -8,6 +8,8 @@ import {
 
 const db = getFirestore(firebase_app);
 
+// NO LONGER USED
+
 export default async function addEntryExistingCollection(
   userid,
   habitid,
