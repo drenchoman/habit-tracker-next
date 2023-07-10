@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import Signout from '../components/signout';
 import getHabits from '../firebase/firestore/getHabits';
 import GetStarted from '../components/getStarted';
-import IncrementHabit from '../components/incrementHabit';
+import IncrementHabitWrapper from '../components/incrementHabitWrapper';
 export default function Admin() {
   const { user } = useAuthContext();
   const router = useRouter();
@@ -36,7 +36,7 @@ export default function Admin() {
       {habits.length == 0 ? (
         <GetStarted />
       ) : (
-        <IncrementHabit habits={habits} />
+        <IncrementHabitWrapper habits={habits} />
       )}
       <Signout />
     </main>
