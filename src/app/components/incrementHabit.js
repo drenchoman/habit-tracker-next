@@ -2,38 +2,47 @@
 import getDate from '../utilities/getDate';
 import { useAuthContext } from '../context/AuthContext';
 import addHabitEntry from '../firebase/firestore/addHabitEntry';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+// Todo: If freq = count, send off to DB, otherwise return
 
 export default function IncrementHabit({ habit }) {
   const { user } = useAuthContext();
   const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    let check = checkCount(habit.frequency);
+    if (check) {
+      addDateEntryToHabit(habit);
+    }
+  }, [count]);
+
   const checkCount = (frequency) => {
-    setCount((count) => count + 1);
-    if (frequency == count) {
+    if (count == frequency) {
       return true;
     }
     return false;
   };
 
+  const updateCount = () => {
+    setCount((count) => count + 1);
+  };
+
   const addDateEntryToHabit = async (habit) => {
-    let addEntry = checkCount(habit.frequency);
-    console.log(addEntry);
-    console.log(count);
-    // let { date, timestamp } = getDate();
+    let { date, timestamp } = getDate();
 
-    // let data = { status: true, notes: 'test', date, timestamp };
+    let data = { status: true, notes: 'test', date, timestamp };
 
-    // const { result, error } = await addHabitEntry(
-    //   user.uid,
-    //   habit.habitid,
-    //   data
-    // );
+    const { result, error } = await addHabitEntry(
+      user.uid,
+      habit.id,
+      data
+    );
 
-    // if (error) {
-    //   return console.log(error);
-    // }
-    // console.log(result);
+    if (error) {
+      return console.log(error);
+    }
+    console.log(result);
   };
 
   return (
@@ -43,12 +52,22 @@ export default function IncrementHabit({ habit }) {
       <span>
         Frequency {count} / {habit.frequency}
       </span>
-      <button
-        className="rounded bg-blue-400"
-        onClick={() => addDateEntryToHabit(habit)}
-      >
-        Again
-      </button>
+      {count == habit.frequency ? (
+        <button
+          disabled
+          className="rounded bg-blue-400"
+          onClick={() => updateCount()}
+        >
+          Again
+        </button>
+      ) : (
+        <button
+          className="rounded bg-blue-400"
+          onClick={() => updateCount()}
+        >
+          Again
+        </button>
+      )}
     </div>
   );
 }
