@@ -58,7 +58,7 @@ export default function IncrementHabit({ habit }) {
           className="rounded bg-blue-400"
           onClick={() => updateCount()}
         >
-          Again
+          NICE!
         </button>
       ) : (
         <button
