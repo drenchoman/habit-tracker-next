@@ -2,6 +2,7 @@
 import getDate from '../utilities/getDate';
 import { useAuthContext } from '../context/AuthContext';
 import addHabitEntry from '../firebase/firestore/addHabitEntry';
+import getDatesFromHabits from '../firebase/firestore/getDatesFromHabits';
 import { useState, useEffect } from 'react';
 
 // Todo: If freq = count, send off to DB, otherwise return
@@ -9,6 +10,33 @@ import { useState, useEffect } from 'react';
 export default function IncrementHabit({ habit }) {
   const { user } = useAuthContext();
   const [count, setCount] = useState(0);
+  const [completed, setCompleted] = useState(false);
+  const [dates, setDates] = useState([]);
+
+  // Get dates per habit
+  useEffect(() => {
+    const getDates = async () => {
+      const { result, error } = await getDatesFromHabits(
+        user.uid,
+        habit.id
+      );
+      if (error) {
+        console.log(error);
+      }
+      checkForToday(result);
+    };
+    getDates();
+  }, [user]);
+
+  const checkForToday = (arr) => {
+    let date = getDate();
+    console.log(arr);
+    let test = arr.filter((d) => d.date == '12072023');
+    if (test[0].status == true) {
+      setCompleted(true);
+    }
+    console.log('no date found');
+  };
 
   useEffect(() => {
     let check = checkCount(habit.frequency);
@@ -19,6 +47,7 @@ export default function IncrementHabit({ habit }) {
 
   const checkCount = (frequency) => {
     if (count == frequency) {
+      setCompleted(true);
       return true;
     }
     return false;
@@ -33,16 +62,16 @@ export default function IncrementHabit({ habit }) {
 
     let data = { status: true, notes: 'test', date, timestamp };
 
-    const { result, error } = await addHabitEntry(
-      user.uid,
-      habit.id,
-      data
-    );
+    // const { result, error } = await addHabitEntry(
+    //   user.uid,
+    //   habit.id,
+    //   data
+    // );
 
-    if (error) {
-      return console.log(error);
-    }
-    console.log(result);
+    // if (error) {
+    //   return console.log(error);
+    // }
+    // console.log(result);
   };
 
   return (
@@ -52,10 +81,10 @@ export default function IncrementHabit({ habit }) {
       <span>
         Frequency {count} / {habit.frequency}
       </span>
-      {count == habit.frequency ? (
+      {completed ? (
         <button
           disabled
-          className="rounded bg-blue-400"
+          className="rounded bg-green-400"
           onClick={() => updateCount()}
         >
           NICE!
