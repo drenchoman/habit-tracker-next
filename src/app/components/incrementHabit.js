@@ -2,16 +2,14 @@
 import getDate from '../utilities/getDate';
 import { useAuthContext } from '../context/AuthContext';
 import addHabitEntry from '../firebase/firestore/addHabitEntry';
+import updateHabit from '../firebase/firestore/updateHabit';
 import getDatesFromHabits from '../firebase/firestore/getDatesFromHabits';
 import { useState, useEffect } from 'react';
-
-// Todo: If freq = count, send off to DB, otherwise return
 
 export default function IncrementHabit({ habit }) {
   const { user } = useAuthContext();
   const [count, setCount] = useState(0);
   const [completed, setCompleted] = useState(false);
-  const [dates, setDates] = useState([]);
 
   // Get dates per habit
   useEffect(() => {
@@ -28,14 +26,19 @@ export default function IncrementHabit({ habit }) {
     getDates();
   }, [user]);
 
+  // Check if there is a completed entry for today
+
   const checkForToday = (arr) => {
-    let date = getDate();
-    console.log(arr);
-    let test = arr.filter((d) => d.date == '12072023');
+    let { date } = getDate();
+    console.log(date);
+    let test = arr.filter((d) => d.date == date);
+    if (test.length == 0) {
+      console.log('no date found');
+      return;
+    }
     if (test[0].status == true) {
       setCompleted(true);
     }
-    console.log('no date found');
   };
 
   useEffect(() => {
@@ -61,6 +64,12 @@ export default function IncrementHabit({ habit }) {
     let { date, timestamp } = getDate();
 
     let data = { status: true, notes: 'test', date, timestamp };
+    // let newStreak = habit.currentStreak + 1;
+    // console.log(newStreak);
+    // console.log(typeof newStreak);
+    const { result, error } = await updateHabit(user.uid, habit.id, {
+      currentStreak: habit.currentStreak + 1,
+    });
 
     // const { result, error } = await addHabitEntry(
     //   user.uid,
