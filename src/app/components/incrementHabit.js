@@ -30,10 +30,8 @@ export default function IncrementHabit({ habit }) {
 
   const checkForToday = (arr) => {
     let { date } = getDate();
-    console.log(date);
     let test = arr.filter((d) => d.date == date);
     if (test.length == 0) {
-      console.log('no date found');
       return;
     }
     if (test[0].status == true) {
@@ -64,23 +62,21 @@ export default function IncrementHabit({ habit }) {
     let { date, timestamp } = getDate();
 
     let data = { status: true, notes: 'test', date, timestamp };
-    // let newStreak = habit.currentStreak + 1;
-    // console.log(newStreak);
-    // console.log(typeof newStreak);
-    const { result, error } = await updateHabit(user.uid, habit.id, {
+
+    await updateHabit(user.uid, habit.id, {
       currentStreak: habit.currentStreak + 1,
     });
 
-    // const { result, error } = await addHabitEntry(
-    //   user.uid,
-    //   habit.id,
-    //   data
-    // );
+    const { result, error } = await addHabitEntry(
+      user.uid,
+      habit.id,
+      data
+    );
 
-    // if (error) {
-    //   return console.log(error);
-    // }
-    // console.log(result);
+    if (error) {
+      return console.log(error);
+    }
+    console.log(result);
   };
 
   return (
