@@ -1,10 +1,9 @@
-export default function GetDate(date) {
-  let string = date.toString();
-  let y = string.slice(4);
-  let m = string.slice(2, 4);
-  let d = string.slice(0, 2);
-  let arr = [y, m, d];
+export default function extractDate(date) {
+  let d = String(date.getDate()).padStart(2, '0');
+  let m = String(date.getMonth() + 1).padStart(2, '0');
+  let y = date.getFullYear();
+  let dateString = `${d}${m}${y}`;
+  let timestamp = date.getTime();
 
-  let extract = arr.join('-');
-  return extract;
+  return { dateString, timestamp };
 }
