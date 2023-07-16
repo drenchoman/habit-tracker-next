@@ -14,7 +14,6 @@ export default function Admin() {
       router.push('/');
     } else {
       // user is logged in
-      console.log(user);
     }
   }, [user]);
 

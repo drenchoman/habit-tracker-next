@@ -1,3 +1,4 @@
+// Converts my format of date into a date suitable for getDateBetweenRange function
 export default function convertDate(date) {
   let string = date.toString();
   let y = string.slice(4);

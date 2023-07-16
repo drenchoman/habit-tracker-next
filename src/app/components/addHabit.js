@@ -2,27 +2,33 @@
 import { useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import addHabit from '../firebase/firestore/addHabit';
+import getDate from '../utilities/getDate';
+import { useRouter } from 'next/router';
 
 export default function AddHabit() {
   const { user } = useAuthContext();
+  const router = useRouter();
   const [name, setName] = useState('');
   const [desc, setDesc] = useState('');
   const [freq, setFreq] = useState(1);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    let { date, timestamp } = getDate();
     const data = {
       name: name,
       description: desc,
       frequency: freq,
       currentStreak: 0,
+      date,
+      timestamp,
     };
 
     const { result, error } = await addHabit(user.uid, data);
     if (error) {
       return console.log(error);
     }
-    console.log(result);
+    router.push('/home');
   };
 
   return (
