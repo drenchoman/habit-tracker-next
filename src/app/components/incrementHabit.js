@@ -4,6 +4,7 @@ import { useAuthContext } from '../context/AuthContext';
 import addHabitEntry from '../firebase/firestore/addHabitEntry';
 import updateHabit from '../firebase/firestore/updateHabit';
 import getDatesFromHabits from '../firebase/firestore/getDatesFromHabits';
+import checkForToday from '../utilities/checkToday';
 import { useState, useEffect } from 'react';
 
 export default function IncrementHabit({ habit }) {
@@ -21,25 +22,23 @@ export default function IncrementHabit({ habit }) {
       if (error) {
         console.log(error);
       }
-      checkForToday(result);
+      setCompleted(checkForToday(result));
     };
     getDates();
   }, [user]);
 
   // Check if there is a completed entry for today
 
-  const checkForToday = (arr) => {
-    let { date } = getDate();
-    console.log(date);
-    let test = arr.filter((d) => d.date == date);
-    if (test.length == 0) {
-      console.log('no date found');
-      return;
-    }
-    if (test[0].status == true) {
-      setCompleted(true);
-    }
-  };
+  // const checkForToday = (arr) => {
+  //   let { date } = getDate();
+  //   let test = arr.filter((d) => d.date == date);
+  //   if (test.length == 0) {
+  //     return;
+  //   }
+  //   if (test[0].status == true) {
+  //     setCompleted(true);
+  //   }
+  // };
 
   useEffect(() => {
     let check = checkCount(habit.frequency);
