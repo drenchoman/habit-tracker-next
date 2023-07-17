@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import addHabit from '../firebase/firestore/addHabit';
 import getDate from '../utilities/getDate';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function AddHabit() {
   const { user } = useAuthContext();
