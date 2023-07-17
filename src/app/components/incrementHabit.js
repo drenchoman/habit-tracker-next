@@ -4,6 +4,7 @@ import { useAuthContext } from '../context/AuthContext';
 import addHabitEntry from '../firebase/firestore/addHabitEntry';
 import updateHabit from '../firebase/firestore/updateHabit';
 import getDatesFromHabits from '../firebase/firestore/getDatesFromHabits';
+import getYesterdayDate from '../utilities/getYesterdayDate';
 import checkForToday from '../utilities/checkToday';
 import { useState, useEffect } from 'react';
 
@@ -24,21 +25,11 @@ export default function IncrementHabit({ habit }) {
       }
       setCompleted(checkForToday(result));
     };
+    checkStreak();
     getDates();
   }, [user]);
 
-  // Check if there is a completed entry for today
-
-  // const checkForToday = (arr) => {
-  //   let { date } = getDate();
-  //   let test = arr.filter((d) => d.date == date);
-  //   if (test.length == 0) {
-  //     return;
-  //   }
-  //   if (test[0].status == true) {
-  //     setCompleted(true);
-  //   }
-  // };
+  // Update count
 
   useEffect(() => {
     let check = checkCount(habit.frequency);
@@ -53,6 +44,10 @@ export default function IncrementHabit({ habit }) {
       return true;
     }
     return false;
+  };
+
+  const checkStreak = () => {
+    console.log(getYesterdayDate());
   };
 
   const updateCount = () => {
@@ -74,10 +69,10 @@ export default function IncrementHabit({ habit }) {
     //   data
     // );
 
-    // if (error) {
-    //   return console.log(error);
-    // }
-    // console.log(result);
+    if (error) {
+      return console.log(error);
+    }
+    console.log(result);
   };
 
   return (
