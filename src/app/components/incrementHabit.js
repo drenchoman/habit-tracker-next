@@ -7,6 +7,7 @@ import getDatesFromHabits from '../firebase/firestore/getDatesFromHabits';
 import getYesterdayDate from '../utilities/getYesterdayDate';
 import checkForToday from '../utilities/checkToday';
 import { useState, useEffect } from 'react';
+import checkStreakContinues from '../utilities/checkStreakContinues';
 
 export default function IncrementHabit({ habit }) {
   const { user } = useAuthContext();
@@ -24,8 +25,9 @@ export default function IncrementHabit({ habit }) {
         console.log(error);
       }
       setCompleted(checkForToday(result));
+      checkStreak(result);
     };
-    checkStreak();
+
     getDates();
   }, [user]);
 
@@ -46,8 +48,10 @@ export default function IncrementHabit({ habit }) {
     return false;
   };
 
-  const checkStreak = () => {
-    console.log(getYesterdayDate());
+  // IF false update habit - set current streak to 0 if True do nothing
+  const checkStreak = (result) => {
+    let yesterday = getYesterdayDate();
+    checkStreakContinues(yesterday, result);
   };
 
   const updateCount = () => {
