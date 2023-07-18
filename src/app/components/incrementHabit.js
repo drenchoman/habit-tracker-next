@@ -13,6 +13,7 @@ export default function IncrementHabit({ habit }) {
   const { user } = useAuthContext();
   const [count, setCount] = useState(0);
   const [completed, setCompleted] = useState(false);
+  const [streak, setStreak] = useState(habit.currentStreak);
 
   // Get dates per habit
   useEffect(() => {
@@ -49,9 +50,15 @@ export default function IncrementHabit({ habit }) {
   };
 
   // IF false update habit - set current streak to 0 if True do nothing
-  const checkStreak = (result) => {
+  const checkStreak = async (result) => {
     let yesterday = getYesterdayDate();
-    checkStreakContinues(yesterday, result);
+    let { date, timestamp } = getDate();
+    let continues = checkStreakContinues(yesterday, date, result);
+    if (continues == false) {
+      await updateHabit(user.uid, habit.id, {
+        currentStreak: 0,
+      });
+    }
   };
 
   const updateCount = () => {
@@ -67,40 +74,49 @@ export default function IncrementHabit({ habit }) {
       currentStreak: habit.currentStreak + 1,
     });
 
-    // const { result, error } = await addHabitEntry(
-    //   user.uid,
-    //   habit.id,
-    //   data
-    // );
+    const { result, error } = await addHabitEntry(
+      user.uid,
+      habit.id,
+      data
+    );
 
     if (error) {
       return console.log(error);
     }
-    console.log(result);
+    setStreak((streak) => streak + 1);
   };
 
   return (
     <div className="flex flex-col" key={habit.id}>
       <h3>{habit.name}</h3>
-      <span>{habit.currentStreak}</span>
-      <span>
-        Frequency {count} / {habit.frequency}
-      </span>
+      <span>{streak}</span>
+
       {completed ? (
-        <button
-          disabled
-          className="rounded bg-green-400"
-          onClick={() => updateCount()}
-        >
-          NICE!
-        </button>
+        <>
+          <span>
+            Frequency {habit.frequency} / {habit.frequency}
+          </span>
+
+          <button
+            disabled
+            className="rounded bg-green-400"
+            onClick={() => updateCount()}
+          >
+            NICE!
+          </button>
+        </>
       ) : (
-        <button
-          className="rounded bg-blue-400"
-          onClick={() => updateCount()}
-        >
-          Again
-        </button>
+        <>
+          <span>
+            Frequency {count} / {habit.frequency}
+          </span>
+          <button
+            className="rounded bg-blue-400"
+            onClick={() => updateCount()}
+          >
+            Again
+          </button>
+        </>
       )}
     </div>
   );
