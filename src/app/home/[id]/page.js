@@ -1,13 +1,23 @@
 'use client';
 import { useAuthContext } from '@/app/context/AuthContext';
-import { useRouter } from 'next/router';
+import React from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import getSingleHabit from '@/app/firebase/firestore/getSingleHabit';
+
 export default function HabitPage() {
   const { user } = useAuthContext();
-  const router = useRouter();
+  const { id } = useParams();
 
+  React.useEffect(() => {
+    const getHabitData = async () => {
+      let { result, error } = await getSingleHabit(user.uid, id);
+      console.log(result, error);
+    };
+    getHabitData;
+  }, []);
   return (
-    <div>
-      <p>{router.query.id}</p>
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-center p-8">
+      <div className="flex flex-col items-center"></div>
+    </main>
   );
 }

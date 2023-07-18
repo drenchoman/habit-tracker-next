@@ -8,6 +8,7 @@ import getYesterdayDate from '../utilities/getYesterdayDate';
 import checkForToday from '../utilities/checkToday';
 import { useState, useEffect } from 'react';
 import checkStreakContinues from '../utilities/checkStreakContinues';
+import Link from 'next/link';
 
 export default function IncrementHabit({ habit }) {
   const { user } = useAuthContext();
@@ -49,7 +50,7 @@ export default function IncrementHabit({ habit }) {
     return false;
   };
 
-  // IF false update habit - set current streak to 0 if True do nothing
+  // Check streak should continue
   const checkStreak = async (result) => {
     let yesterday = getYesterdayDate();
     let { date, timestamp } = getDate();
@@ -64,6 +65,8 @@ export default function IncrementHabit({ habit }) {
   const updateCount = () => {
     setCount((count) => count + 1);
   };
+
+  // Add date to DB for streak and habit
 
   const addDateEntryToHabit = async (habit) => {
     let { date, timestamp } = getDate();
@@ -88,7 +91,9 @@ export default function IncrementHabit({ habit }) {
 
   return (
     <div className="flex flex-col" key={habit.id}>
-      <h3>{habit.name}</h3>
+      <h3>
+        <Link href={`/home/${habit.id}`}>{habit.name}</Link>
+      </h3>
       <span>{streak}</span>
 
       {completed ? (
