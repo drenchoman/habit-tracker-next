@@ -6,5 +6,5 @@ export default function extractDate(date) {
   let dateString = `${d}${m}${y}`;
   let timestamp = date.getTime();
 
-  return { dateString, timestamp };
+  return dateString;
 }

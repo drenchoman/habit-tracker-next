@@ -1,4 +1,4 @@
-// Function can take in a date extracted from extractDate
+// Function can take in a date extracted from convertDate
 export default function getDatesInRange(startDate, endDate) {
   const date = new Date(startDate.getTime());
 
