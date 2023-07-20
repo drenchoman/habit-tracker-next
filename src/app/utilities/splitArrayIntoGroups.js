@@ -2,7 +2,7 @@
 
 export default function splitArrayIntoGroups(array, groupSize) {
   const result = [];
-  const arrayLength = array.arrayLength;
+  const arrayLength = array.length;
 
   for (let i = 0; i < arrayLength; i += groupSize) {
     result.push(array.slice(i, i + groupSize));

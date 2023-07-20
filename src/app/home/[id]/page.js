@@ -8,6 +8,8 @@ import getDatesFromHabits from '@/app/firebase/firestore/getDatesFromHabits';
 import filterUniqueValues from '@/app/utilities/filterUniqueDates';
 import addHabitEntry from '@/app/firebase/firestore/addHabitEntry';
 import getDate from '@/app/utilities/getDate';
+import splitArrayIntoGroups from '@/app/utilities/splitArrayIntoGroups';
+import { split } from 'postcss/lib/list';
 
 export default function HabitPage() {
   const { user } = useAuthContext();
@@ -33,7 +35,9 @@ export default function HabitPage() {
       if (error) {
         return console.log(error);
       }
-      setDates(result);
+
+      let group = splitArrayIntoGroups(result, 7);
+      setDates(group);
 
       let converted = convertDatesInRange(result[0].date);
 
@@ -73,9 +77,13 @@ export default function HabitPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
       <div className="flex flex-col items-center">
-        {dates.map((d) => (
-          <div key={d.id}>
-            <p>{d.status == true ? '🟢' : '🔴'}</p>
+        {dates.map((innerArray, outerIndex) => (
+          <div key={outerIndex}>
+            {innerArray.map((d, innerIndex) => (
+              <div key={d.id}>
+                <p>{d.status == true ? '🟢' : '🔴'}</p>
+              </div>
+            ))}
           </div>
         ))}
       </div>
