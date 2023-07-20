@@ -43,16 +43,17 @@ export default function HabitPage() {
 
       let datesToCompare = result.map((r) => r.date);
       console.log(datesToCompare);
+
       function filterUniqueValues(arr1, arr2) {
-        let intersection = arr1.filter((e) => arr2.includes(e));
+        let intersection = arr1.filter((e) => !arr2.includes(e));
         return intersection;
       }
-      console.log(filterUniqueValues(datesToCompare, converted));
+      console.log(filterUniqueValues(converted, datesToCompare));
 
-      let filtered = result.filter(
-        (arr, i) => !arr.some((ar) => ar.date == converted.dateString)
-      );
-      console.log(filtered);
+      // let filtered = result.filter(
+      //   (arr, i) => !arr.some((ar) => ar.date == converted.dateString)
+      // );
+      // console.log(filtered);
     };
     getDates();
   }, []);
