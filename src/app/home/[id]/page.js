@@ -1,13 +1,11 @@
 'use client';
 import { useAuthContext } from '@/app/context/AuthContext';
 import React from 'react';
-import convertDate from '@/app/utilities/convertDate';
-import extractDate from '@/app/utilities/extractDate';
-import getDate from '@/app/utilities/getDate';
+import convertDatesInRange from '@/app/utilities/convertDatesInRange';
 import { useRouter, useParams } from 'next/navigation';
 import getSingleHabit from '@/app/firebase/firestore/getSingleHabit';
 import getDatesFromHabits from '@/app/firebase/firestore/getDatesFromHabits';
-import getDatesInRange from '@/app/utilities/getDateBetweenRange';
+import filterUniqueValues from '@/app/utilities/filterUniqueDates';
 
 export default function HabitPage() {
   const { user } = useAuthContext();
@@ -34,26 +32,16 @@ export default function HabitPage() {
         return console.log(error);
       }
       setDates(result);
-      let startDate = convertDate(result[0].date);
-      let { date } = getDate();
-      let endDate = convertDate(date);
-      let range = getDatesInRange(startDate, endDate);
-      let converted = range.map((r) => extractDate(r));
-      console.log(converted);
+
+      let converted = convertDatesInRange(result[0].date);
 
       let datesToCompare = result.map((r) => r.date);
-      console.log(datesToCompare);
 
-      function filterUniqueValues(arr1, arr2) {
-        let intersection = arr1.filter((e) => !arr2.includes(e));
-        return intersection;
-      }
-      console.log(filterUniqueValues(converted, datesToCompare));
-
-      // let filtered = result.filter(
-      //   (arr, i) => !arr.some((ar) => ar.date == converted.dateString)
-      // );
-      // console.log(filtered);
+      let intersection = filterUniqueValues(
+        converted,
+        datesToCompare
+      );
+      console.log(intersection);
     };
     getDates();
   }, []);
