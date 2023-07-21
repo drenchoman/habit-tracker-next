@@ -78,7 +78,7 @@ export default function HabitPage() {
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
       <div className="flex flex-col items-center">
         {dates.map((innerArray, outerIndex) => (
-          <div key={outerIndex}>
+          <div className="m-8" key={outerIndex}>
             {innerArray.map((d, innerIndex) => (
               <div key={d.id}>
                 <p>{d.status == true ? '🟢' : '🔴'}</p>
