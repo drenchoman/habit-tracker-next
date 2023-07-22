@@ -3,6 +3,7 @@ import DialogModal from './dialogModal';
 
 export default function GoAgainLetter({ d }) {
   const [isOpened, setIsOpened] = useState(false);
+
   return (
     <div key={d.id}>
       {d.status == true ? (
@@ -10,14 +11,19 @@ export default function GoAgainLetter({ d }) {
           {d.letter}
         </p>
       ) : (
-        <p className="text-xl opacity-50">{d.letter}</p>
+        <p
+          onClick={() => setIsOpened(true)}
+          className="text-xl opacity-50"
+        >
+          {d.letter}
+        </p>
       )}
       <DialogModal
-        title="hello world"
+        title="Date"
         isOpened={isOpened}
         onClose={() => setIsOpened(false)}
       >
-        <p>testing</p>
+        <p>{d.date}</p>
       </DialogModal>
     </div>
   );
