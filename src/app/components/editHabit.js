@@ -19,7 +19,9 @@ export default function EditHabit({ id }) {
 
   const getHabitInfo = async () => {
     const { result, error } = await getSingleHabit(user.uid, id);
-    console.log(result.name);
+    if (error) {
+      console.log('An error occurred');
+    }
     setName(result.name);
     setDesc(result.description);
     setFreq(result.frequency);
