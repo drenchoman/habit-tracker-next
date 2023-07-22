@@ -3,9 +3,8 @@ import IncrementHabit from './incrementHabit';
 export default function IncrementHabitWrapper({ habits }) {
   return (
     <div className="flex flex-col ">
-      <h2 className="text-3xl text-center font-bold my-2">
-        Go Again
-      </h2>
+      <h3 className="text-l  my-2">Your Habits</h3>
+
       <div>
         {habits.map((habit) => (
           <IncrementHabit key={habit.id} habit={habit} />
