@@ -30,7 +30,7 @@ export default function Admin() {
   }, [user]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
+    <main className="flex min-h-screen flex-col  justify-center p-8">
       {habits.length == 0 ? (
         <GetStarted />
       ) : (

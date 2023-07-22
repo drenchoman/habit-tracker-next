@@ -17,6 +17,7 @@ export default function HabitPage() {
   const { id } = useParams();
   const [dates, setDates] = React.useState([]);
   const [data, setData] = React.useState({});
+  const [updated, setUpdated] = React.useState(false);
 
   React.useEffect(() => {
     const getHabitData = async () => {
@@ -48,13 +49,16 @@ export default function HabitPage() {
         datesToCompare
       );
       if (intersection.length >= 1) {
-        intersection.forEach((date) => addDateEntryToHabit(id, date));
+        await intersection.forEach((date) =>
+          addDateEntryToHabit(id, date)
+        );
+        setUpdated(true);
       }
       // else no new dates to add
       return;
     };
     getDates();
-  }, []);
+  }, [updated]);
 
   const addDateEntryToHabit = async (id, date) => {
     let { timestamp } = getDate();

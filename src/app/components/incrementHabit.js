@@ -8,7 +8,9 @@ import getYesterdayDate from '../utilities/getYesterdayDate';
 import checkForToday from '../utilities/checkToday';
 import { useState, useEffect } from 'react';
 import checkStreakContinues from '../utilities/checkStreakContinues';
+import IncrementCard from './incrementCard';
 import Link from 'next/link';
+import { PiFireBold } from 'react-icons/Pi';
 
 export default function IncrementHabit({ habit }) {
   const { user } = useAuthContext();
@@ -90,39 +92,22 @@ export default function IncrementHabit({ habit }) {
   };
 
   return (
-    <div className="flex flex-col" key={habit.id}>
-      <h3>
-        <Link href={`/home/${habit.id}`}>{habit.name}</Link>
-      </h3>
-      <span>{streak}</span>
-
-      {completed ? (
-        <>
-          <span>
-            Frequency {habit.frequency} / {habit.frequency}
-          </span>
-
-          <button
-            disabled
-            className="rounded bg-green-400"
-            onClick={() => updateCount()}
-          >
-            NICE!
-          </button>
-        </>
-      ) : (
-        <>
-          <span>
-            Frequency {count} / {habit.frequency}
-          </span>
-          <button
-            className="rounded bg-blue-400"
-            onClick={() => updateCount()}
-          >
-            Again
-          </button>
-        </>
-      )}
+    <div className="flex flex-col my-3" key={habit.id}>
+      <div className="flex flex-row justify-between">
+        <h3 className="text-xl font-bold">
+          <Link href={`/home/${habit.id}`}>{habit.name}</Link>
+        </h3>
+        <div className="flex justify-center items-center">
+          <PiFireBold size={36} />
+          <span className="text-2xl mx-1"> {streak}</span>
+        </div>
+      </div>
+      <IncrementCard
+        completed={completed}
+        count={count}
+        habit={habit}
+        updateCount={updateCount}
+      />
     </div>
   );
 }
