@@ -17,7 +17,6 @@ export default function HabitPage() {
   const { id } = useParams();
   const [dates, setDates] = React.useState([]);
   const [data, setData] = React.useState({});
-  console.log(data);
 
   React.useEffect(() => {
     const getHabitData = async () => {
@@ -78,7 +77,7 @@ export default function HabitPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
       <GoAgainWrapper dates={dates} />
-      <HabitInfo data={data} />
+      <HabitInfo data={data} id={id} />
     </main>
   );
 }
