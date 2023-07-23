@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useAuthContext } from '../context/AuthContext';
-import addHabit from '../firebase/firestore/addHabit';
+import updateHabit from '../firebase/firestore/updateHabit';
 import getDate from '../utilities/getDate';
 import { useRouter } from 'next/navigation';
 import getSingleHabit from '../firebase/firestore/getSingleHabit';
@@ -29,17 +29,13 @@ export default function EditHabit({ id }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let { date, timestamp } = getDate();
     const data = {
       name: name,
       description: desc,
       frequency: freq,
-      currentStreak: 0,
-      date,
-      timestamp,
     };
 
-    const { result, error } = await addHabit(user.uid, data);
+    const { result, error } = await updateHabit(user.uid, id, data);
     if (error) {
       return console.log(error);
     }
