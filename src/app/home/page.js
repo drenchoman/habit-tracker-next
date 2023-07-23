@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { MdAddCircleOutline } from 'react-icons/md';
-
+import Navbar from '../components/navbar';
 import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import { useRouter } from 'next/navigation';
@@ -33,10 +32,7 @@ export default function Admin() {
 
   return (
     <main className="flex min-h-screen flex-col p-8">
-      <div className="flex justify-between items-center my-2">
-        <h2 className="text-4xl font-bold my-2">Go Again</h2>
-        <MdAddCircleOutline size={36} />
-      </div>
+      <Navbar />
 
       {habits.length == 0 ? (
         <GetStarted />

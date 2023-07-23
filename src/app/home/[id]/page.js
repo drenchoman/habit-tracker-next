@@ -2,6 +2,7 @@
 import { useAuthContext } from '@/app/context/AuthContext';
 import React from 'react';
 import convertDatesInRange from '@/app/utilities/convertDatesInRange';
+import Navbar from '@/app/components/navbar';
 import { useRouter, useParams } from 'next/navigation';
 import getSingleHabit from '@/app/firebase/firestore/getSingleHabit';
 import getDatesFromHabits from '@/app/firebase/firestore/getDatesFromHabits';
@@ -20,45 +21,44 @@ export default function HabitPage() {
   const [updated, setUpdated] = React.useState(false);
 
   React.useEffect(() => {
-    const getHabitData = async () => {
-      let { result, error } = await getSingleHabit(user.uid, id);
-      if (error) {
-        return console.log('error', error);
-      }
-      setData(result);
-    };
     getHabitData();
   }, []);
 
   React.useEffect(() => {
-    const getDates = async () => {
-      let { result, error } = await getDatesFromHabits(user.uid, id);
-      if (error) {
-        return console.log(error);
-      }
-
-      let group = splitArrayIntoGroups(result, 7);
-      setDates(group);
-
-      let converted = convertDatesInRange(result[0].date);
-
-      let datesToCompare = result.map((r) => r.date);
-
-      let intersection = filterUniqueValues(
-        converted,
-        datesToCompare
-      );
-      if (intersection.length >= 1) {
-        await intersection.forEach((date) =>
-          addDateEntryToHabit(id, date)
-        );
-        setUpdated(true);
-      }
-      // else no new dates to add
-      return;
-    };
     getDates();
   }, [updated]);
+
+  const getHabitData = async () => {
+    let { result, error } = await getSingleHabit(user.uid, id);
+    if (error) {
+      return console.log('error', error);
+    }
+    setData(result);
+  };
+
+  const getDates = async () => {
+    let { result, error } = await getDatesFromHabits(user.uid, id);
+    if (error) {
+      return console.log(error);
+    }
+
+    let group = splitArrayIntoGroups(result, 7);
+    setDates(group);
+
+    let converted = convertDatesInRange(result[0].date);
+
+    let datesToCompare = result.map((r) => r.date);
+
+    let intersection = filterUniqueValues(converted, datesToCompare);
+    if (intersection.length >= 1) {
+      await intersection.forEach((date) =>
+        addDateEntryToHabit(id, date)
+      );
+      setUpdated(true);
+    }
+    // else no new dates to add
+    return;
+  };
 
   const addDateEntryToHabit = async (id, date) => {
     let { timestamp } = getDate();
@@ -79,7 +79,8 @@ export default function HabitPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
+    <main className="flex min-h-screen flex-col p-8">
+      <Navbar />
       <GoAgainWrapper dates={dates} />
       <HabitInfo data={data} id={id} />
     </main>

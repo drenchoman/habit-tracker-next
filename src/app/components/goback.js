@@ -4,7 +4,7 @@ export default function GoBack() {
   const router = useRouter();
   return (
     <div onClick={() => router.back()}>
-      <BsArrowLeft />
+      <BsArrowLeft size={36} />
     </div>
   );
 }

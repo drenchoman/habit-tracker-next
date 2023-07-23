@@ -1,4 +1,5 @@
 'use client';
+import Navbar from '@/app/components/navbar';
 import React from 'react';
 import { useAuthContext } from '../../context/AuthContext';
 import { useRouter } from 'next/navigation';
@@ -18,11 +19,9 @@ export default function Admin() {
   }, [user]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8">
-      <div className="flex flex-col items-center">
-        <h2>New Habit</h2>
-        <AddHabit />
-      </div>
+    <main className="flex min-h-screen flex-col p-8">
+      <Navbar />
+      <AddHabit />
 
       <Signout />
     </main>
