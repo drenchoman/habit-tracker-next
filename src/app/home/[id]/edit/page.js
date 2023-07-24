@@ -21,7 +21,7 @@ export default function Edit() {
     <main className="flex min-h-screen flex-col max-w-2xl m-auto p-8">
       <Navbar />
 
-      <h3 className="text-l font-light my-2">Add Habit</h3>
+      <h3 className="text-l font-light my-2">Edit Habit</h3>
       <EditHabit id={id} />
       <GoBack />
     </main>

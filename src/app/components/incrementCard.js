@@ -32,7 +32,7 @@ export default function IncrementCard({
     return (
       <div className="flex flex-col-reverse justify-center items-center">
         <div className="flex text-2xl justify-center">
-          <span className="text-sm">
+          <span className="text-sm ">
             {count} / {habit.frequency}
           </span>
         </div>
