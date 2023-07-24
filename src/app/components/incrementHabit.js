@@ -94,7 +94,7 @@ export default function IncrementHabit({ habit }) {
 
   return (
     <div className="flex flex-col my-3" key={habit.id}>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between my-1">
         <h3 className="text-2xl font-bold">
           <Link href={`/home/${habit.id}`}>{habit.name}</Link>
         </h3>

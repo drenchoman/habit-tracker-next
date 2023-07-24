@@ -18,13 +18,12 @@ export default function Edit() {
   }, [user]);
 
   return (
-    <main className="flex min-h-screen flex-col p-8">
+    <main className="flex min-h-screen flex-col max-w-2xl m-auto p-8">
       <Navbar />
-      <div className="flex flex-col items-center">
-        <h2>Edit Habit</h2>
-        <EditHabit id={id} />
-        <GoBack />
-      </div>
+
+      <h3 className="text-l font-light my-2">Add Habit</h3>
+      <EditHabit id={id} />
+      <GoBack />
     </main>
   );
 }

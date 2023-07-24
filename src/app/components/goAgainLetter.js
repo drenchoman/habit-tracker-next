@@ -5,15 +5,15 @@ export default function GoAgainLetter({ d }) {
   const [isOpened, setIsOpened] = useState(false);
 
   return (
-    <div key={d.id}>
+    <div className="mx-3 " key={d.id}>
       {d.status == true ? (
-        <p onClick={() => setIsOpened(true)} className="text-xl">
+        <p onClick={() => setIsOpened(true)} className="text-4xl">
           {d.letter}
         </p>
       ) : (
         <p
           onClick={() => setIsOpened(true)}
-          className="text-xl opacity-50"
+          className="text-4xl opacity-50"
         >
           {d.letter}
         </p>
