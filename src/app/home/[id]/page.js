@@ -82,7 +82,12 @@ export default function HabitPage() {
     <main className="flex min-h-screen justify-between flex-col max-w-2xl m-auto p-8">
       <Navbar />
       <GoAgainWrapper dates={dates} />
-      <HabitInfo data={data} id={id} />
+      <HabitInfo
+        data={data}
+        id={id}
+        weeks={dates.length}
+        dates={dates}
+      />
     </main>
   );
 }

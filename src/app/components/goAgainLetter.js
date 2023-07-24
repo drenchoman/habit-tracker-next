@@ -3,7 +3,6 @@ import DialogModal from './dialogModal';
 
 export default function GoAgainLetter({ d }) {
   const [isOpened, setIsOpened] = useState(false);
-
   return (
     <div className="mx-3 " key={d.id}>
       {d.status == true ? (
@@ -23,7 +22,11 @@ export default function GoAgainLetter({ d }) {
         isOpened={isOpened}
         onClose={() => setIsOpened(false)}
       >
-        <p>{d.date}</p>
+        <div>
+          <p>{d.date}</p>
+
+          {d.status == true ? <p>Achieved</p> : <p>Missed</p>}
+        </div>
       </DialogModal>
     </div>
   );

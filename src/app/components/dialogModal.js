@@ -32,6 +32,7 @@ export default function DialogModal({
 
   return (
     <dialog
+      className="relative"
       id="test"
       ref={ref}
       onCancel={onClose}
@@ -41,9 +42,11 @@ export default function DialogModal({
         onClose()
       }
     >
-      <h3>{title}</h3>
+      <h3 className="font-bold">{title}</h3>
       {children}
-      <button onClick={onClose}>Close</button>
+      <button className="absolute right-3 bottom-2" onClick={onClose}>
+        Close
+      </button>
     </dialog>
   );
 }
