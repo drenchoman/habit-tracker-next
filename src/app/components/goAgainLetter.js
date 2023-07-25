@@ -4,7 +4,7 @@ import DialogModal from './dialogModal';
 export default function GoAgainLetter({ d }) {
   const [isOpened, setIsOpened] = useState(false);
   return (
-    <div className="mx-3 " key={d.id}>
+    <div className="mx-3 hover:cursor-pointer " key={d.id}>
       {d.status == true ? (
         <p onClick={() => setIsOpened(true)} className="text-4xl">
           {d.letter}
