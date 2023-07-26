@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import signIn from '../firebase/signin';
 import Link from 'next/link';
+import GoBack from './goback';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -51,16 +52,16 @@ export default function SignIn() {
           />
         </div>
         {error ? <span className="text-center">{error}</span> : ''}
-        <button
-          className="bg-blue-400 hover:bg-blue-600 my-2 mx-4 py-2 px-4 rounded"
-          type="submit"
-        >
-          Sign in
-        </button>
+        <div className="flex flex-col items-center">
+          <button
+            className="bg-blue-400 hover:bg-blue-600 my-2 mx-4 py-2 px-4 rounded"
+            type="submit"
+          >
+            Sign in
+          </button>
+        </div>
 
-        <button className="bg-red-400 hover:bg-red-700 my-2 mx-4 py-2 px-4 rounded">
-          <Link href="/"> Home </Link>
-        </button>
+        <GoBack />
       </form>
     </div>
   );

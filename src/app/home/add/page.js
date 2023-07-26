@@ -4,7 +4,7 @@ import React from 'react';
 import { useAuthContext } from '../../context/AuthContext';
 import { useRouter } from 'next/navigation';
 import AddHabit from '@/app/components/addHabit';
-import Signout from '../../components/signout';
+import GoBack from '@/app/components/goback';
 
 export default function Admin() {
   const { user } = useAuthContext();
@@ -24,8 +24,7 @@ export default function Admin() {
 
       <h3 className="text-l font-light my-2">Add Habit</h3>
       <AddHabit />
-
-      <Signout />
+      <GoBack />
     </main>
   );
 }

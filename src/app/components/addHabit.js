@@ -34,7 +34,9 @@ export default function AddHabit() {
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex flex-col my-2">
-        <label htmlFor="name">Habit Name</label>
+        <label className="my-1" htmlFor="name">
+          Habit Name
+        </label>
         <input
           onChange={(e) => setName(e.target.value)}
           className="text-black placeholder:black"
@@ -44,7 +46,9 @@ export default function AddHabit() {
         />
       </div>
       <div className="flex flex-col my-2">
-        <label htmlFor="desc">Description</label>
+        <label className="my-1" htmlFor="desc">
+          Description
+        </label>
         <input
           onChange={(e) => setDesc(e.target.value)}
           className="text-black placeholder:black"
@@ -54,10 +58,12 @@ export default function AddHabit() {
         />
       </div>
       <div className="flex flex-col my-2">
-        <label htmlFor="frequency">Frequency</label>
+        <label className="my-1" htmlFor="frequency">
+          Frequency
+        </label>
         <input
           onChange={(e) => setFreq(e.target.value)}
-          placeholder="How many times a day you want to perform this habit?"
+          placeholder="How many times per day?"
           className="text-black"
           name="frequency"
           id="frequency"

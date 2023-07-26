@@ -1,4 +1,5 @@
 import signout from '../firebase/signout';
+import { BiLogOut } from 'react-icons/bi';
 
 export default function Signout() {
   const handleClick = () => {
@@ -6,11 +7,8 @@ export default function Signout() {
   };
 
   return (
-    <button
-      className="bg-red-400 hover:bg-red-700 rounded py-2 px-4 rounded my-2 mx-2"
-      onClick={handleClick}
-    >
-      Sign out
-    </button>
+    <div className="flex justify-end" onClick={handleClick}>
+      <BiLogOut size={36} />
+    </div>
   );
 }
