@@ -17,6 +17,9 @@
     --input-border: white;
   }
 }
+html {
+  font-family: var(--font-spicy);
+}
 
 body {
   color: rgb(var(--foreground-rgb));
