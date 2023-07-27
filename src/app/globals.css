@@ -22,13 +22,14 @@ html {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  background: rgba(246, 90, 79, 255);
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
 
 body.modal-open {
@@ -54,7 +55,7 @@ form input::placeholder {
   padding: 5px;
 }
 
-input {
+/* input {
   border: 1px solid var(--input-border);
   border-radius: 8px;
-}
+} */
