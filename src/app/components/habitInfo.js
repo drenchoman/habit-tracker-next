@@ -18,8 +18,8 @@ export default function HabitInfo({ data, id, weeks, dates }) {
   const daysmissed = totalDays - daysAchieved;
 
   return (
-    <div className="flex flex-col relative">
-      <div className="flex flex-row absolute right-0 top-2">
+    <div className="flex flex-col relative border-4 p-2 bg-neocard  border-black rounded-md shadow-shadz">
+      <div className="flex flex-row absolute right-2 top-4">
         <Link href={`/home/${id}/edit`}>
           <FiEdit />
         </Link>
@@ -32,13 +32,13 @@ export default function HabitInfo({ data, id, weeks, dates }) {
           <span className="text-1xl mx-1"> {data.currentStreak}</span>
         </div>
       </div>
-      <hr className="my-2"></hr>
+      <hr></hr>
 
-      <div className="flex justify-between">
-        <p>Weeks: {weeks}</p>
-        <p>Days: {totalDays}</p>
-        <p>Achieved: {daysAchieved}</p>
-        <p>Missed: {daysmissed}</p>
+      <div className="flex justify-between flex-wrap">
+        <p className="text-center">Weeks: {weeks}</p>
+        <p className="text-center">Days: {totalDays}</p>
+        <p className="text-center">Achieved: {daysAchieved}</p>
+        <p className="text-center">Missed: {daysmissed}</p>
       </div>
     </div>
   );

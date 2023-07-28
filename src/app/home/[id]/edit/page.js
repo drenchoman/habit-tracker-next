@@ -18,7 +18,7 @@ export default function Edit() {
   }, [user]);
 
   return (
-    <main className="flex min-h-screen flex-col max-w-2xl m-auto p-8">
+    <main className="flex min-h-screen flex-col max-w-2xl m-auto p-4">
       <Navbar />
 
       <h3 className="text-l font-light my-2">Edit Habit</h3>

@@ -22,46 +22,45 @@ export default function Signup() {
   };
 
   return (
-    <div>
-      <form className="flex flex-col" onSubmit={handleForm}>
-        <div className="flex flex-col my-1">
-          <label className="my-1" htmlFor="email">
-            Email
-          </label>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="example@example.com"
-            className="bg-blue-200 placeholder:text-black text-black p-2 my-1"
-            name="email"
-            type="email"
-            id="email"
-          />
-        </div>
-        <div className="flex flex-col my-1">
-          <label className="my-1" htmlFor="password">
-            Password
-          </label>
-          <input
-            className="bg-blue-200 placeholder:text-black text-black p-2 my-1"
-            onChange={(e) => setPassword(e.target.value)}
-            name="password"
-            type="password"
-            id="password"
-            autoComplete="on"
-            placeholder="hunter2"
-          />
-        </div>
-        {error ? <span className="text-center">{error}</span> : ''}
+    <form
+      className=" p-2 border-black bg-neobackground border-4 rounded-md shadow-shadz"
+      onSubmit={handleForm}
+    >
+      <div className="flex flex-col my-1">
+        <label className="my-1" htmlFor="email">
+          Email
+        </label>
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="example@example.com"
+          className=" p-2 my-1"
+          name="email"
+          type="email"
+          id="email"
+        />
+      </div>
+      <div className="flex flex-col my-1">
+        <label className="my-1" htmlFor="password">
+          Password
+        </label>
+        <input
+          className=" p-2 my-1"
+          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          type="password"
+          id="password"
+          autoComplete="on"
+        />
+      </div>
+      {error ? <span className="text-center">{error}</span> : ''}
+      <div className="flex flex-col items-center my-2">
         <button
-          className="bg-blue-400 hover:bg-blue-600 my-4 mx-4 py-2 px-4 rounded"
+          className="border-black bg-neogreen border-4 rounded-md shadow-shadz my-4 mx-4 py-2 px-4"
           type="submit"
         >
-          Sign up
+          Register
         </button>
-        <button className="bg-red-400 hover:bg-red-700 my-2 mx-4 py-2 px-4 rounded">
-          <Link href="/"> Home </Link>
-        </button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

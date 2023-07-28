@@ -13,6 +13,9 @@ module.exports = {
       colors: {
         neoblue: '#7df9ff',
         neogreen: '#2fff2f',
+        neocard: '#ffb2ef',
+        neotext: '#BAFca2',
+        neobackground: 'rgba(246, 90, 79, 255)',
       },
       backgroundImage: {
         'gradient-radial':

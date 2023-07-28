@@ -1,12 +1,5 @@
 import { useState } from 'react';
 import DialogModal from './dialogModal';
-import { Monoton } from 'next/font/google';
-
-const font = Monoton({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-spicy',
-});
 
 export default function GoAgainLetter({ d }) {
   const [isOpened, setIsOpened] = useState(false);
@@ -15,14 +8,14 @@ export default function GoAgainLetter({ d }) {
       {d.status == true ? (
         <p
           onClick={() => setIsOpened(true)}
-          className={`${font.className} text-4xl `}
+          className="font-bold text-4xl text-neotext "
         >
           {d.letter}
         </p>
       ) : (
         <p
           onClick={() => setIsOpened(true)}
-          className={`${font.className} text-4xl opacity-50 `}
+          className={`font-bold text-4xl opacity-25 text-neotext `}
         >
           {d.letter}
         </p>

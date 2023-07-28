@@ -9,7 +9,7 @@ export default function IncrementCard({
   if (completed) {
     return (
       <div className="flex flex-col-reverse justify-center items-center">
-        <div className="flex justify-center">
+        <div className="flex justify-center my-2">
           <span className="text-sm">
             {habit.frequency} / {habit.frequency}
           </span>
@@ -31,7 +31,7 @@ export default function IncrementCard({
   } else
     return (
       <div className="flex flex-col-reverse justify-center items-center">
-        <div className="flex text-2xl justify-center">
+        <div className="flex text-2xl justify-center my-2">
           <span className="text-sm ">
             {count} / {habit.frequency}
           </span>

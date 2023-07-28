@@ -47,7 +47,10 @@ export default function EditHabit({ id }) {
   return loading ? (
     'loading'
   ) : (
-    <form onSubmit={handleSubmit}>
+    <form
+      className="border-4 p-2 bg-neocard border-black rounded-md shadow-shadz"
+      onSubmit={handleSubmit}
+    >
       <div className="flex flex-col my-2">
         <label className="my-1" htmlFor="name">
           Habit Name
@@ -89,7 +92,7 @@ export default function EditHabit({ id }) {
         />
       </div>
       <div className="flex flex-col items-center my-2">
-        <button className="bg-blue-400 hover:bg-blue-700 my-2 mx-4 py-2 px-4 rounded">
+        <button className="border-black bg-neobackground border-4 rounded-md shadow-shadz my-2 mx-4 py-2 px-4">
           Update
         </button>
       </div>

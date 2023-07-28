@@ -31,7 +31,7 @@ export default function Admin() {
   }, [user]);
 
   return (
-    <main className="flex min-h-screen flex-col max-w-2xl m-auto p-8">
+    <main className="flex min-h-screen flex-col max-w-2xl m-auto p-4">
       <Navbar />
 
       {habits.length == 0 ? (

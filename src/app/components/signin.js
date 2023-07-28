@@ -2,17 +2,17 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import signIn from '../firebase/signin';
-import Link from 'next/link';
-import GoBack from './goback';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const handleForm = async (event) => {
     event.preventDefault();
+    setLoading(true);
     const { result, error } = await signIn(email, password);
     if (error) {
       setError(error);
@@ -21,48 +21,46 @@ export default function SignIn() {
     router.push('/home');
   };
   return (
-    <div>
-      <form className="flex flex-col" onSubmit={handleForm}>
-        <div className="flex flex-col my-1">
-          <label className="my-1" htmlFor="email">
-            Email
-          </label>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="example@example.com"
-            className="bg-blue-200 placeholder:text-black text-black
+    <form
+      className="p-2 border-black bg-neobackground border-4 rounded-md shadow-shadz"
+      onSubmit={handleForm}
+    >
+      <div className="flex flex-col my-1">
+        <label className="my-1" htmlFor="email">
+          Email
+        </label>
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="example@example.com"
+          className="
        p-2 my-1"
-            name="email"
-            type="email"
-            id="email"
-          />
-        </div>
-        <div className="flex flex-col my-1">
-          <label className="my-1" htmlFor="password">
-            Password
-          </label>
-          <input
-            className="bg-blue-200 placeholder:text-black text-black p-2 my-1"
-            onChange={(e) => setPassword(e.target.value)}
-            name="password"
-            type="password"
-            id="password"
-            autoComplete="on"
-            placeholder="hunter2"
-          />
-        </div>
-        {error ? <span className="text-center">{error}</span> : ''}
-        <div className="flex flex-col items-center">
-          <button
-            className="bg-blue-400 hover:bg-blue-600 my-2 mx-4 py-2 px-4 rounded"
-            type="submit"
-          >
-            Sign in
-          </button>
-        </div>
-
-        <GoBack />
-      </form>
-    </div>
+          name="email"
+          type="email"
+          id="email"
+        />
+      </div>
+      <div className="flex flex-col my-1">
+        <label className="my-1" htmlFor="password">
+          Password
+        </label>
+        <input
+          className="p-2 my-1"
+          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          type="password"
+          id="password"
+          autoComplete="on"
+        />
+      </div>
+      {error ? <span className="text-center">{error}</span> : ''}
+      <div className="flex flex-col items-center">
+        <button
+          className="border-black bg-neocard border-4 rounded-md shadow-shadz my-2 mx-4 py-2 px-4 "
+          type="submit"
+        >
+          {loading ? 'Loading...' : 'Sign in'}
+        </button>
+      </div>
+    </form>
   );
 }

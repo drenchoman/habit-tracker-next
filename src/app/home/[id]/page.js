@@ -79,7 +79,7 @@ export default function HabitPage() {
   };
 
   return (
-    <main className="flex min-h-screen justify-between flex-col max-w-2xl m-auto p-8">
+    <main className="flex min-h-screen justify-between flex-col max-w-2xl m-auto p-4">
       <Navbar />
       <GoAgainWrapper dates={dates} />
       <HabitInfo
