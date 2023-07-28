@@ -17,7 +17,7 @@ export default function IncrementCard({
         <div className="flex justify-center">
           <button
             disabled
-            className="rounded my-2 mx-4 py-2 px-4 bg-green-400 flex justify-center items-center"
+            className="my-2 mx-4 py-2 px-4 bg-neogreen flex justify-center items-center border-4 border-black rounded-md shadow-shadz"
             onClick={() => updateCount()}
           >
             Great
@@ -38,7 +38,7 @@ export default function IncrementCard({
         </div>
         <div className="flex justify-center">
           <button
-            className="rounded my-2 mx-4 py-2 px-4 bg-blue-400 flex justify-center items-center"
+            className="my-2 mx-4 py-2 px-4 bg-neoblue flex justify-center items-center border-4 border-black rounded-md shadow-shadz"
             onClick={() => updateCount()}
           >
             Again

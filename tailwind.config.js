@@ -8,7 +8,11 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'shadz': '4px 4px 1px black',
+        shadz: '4px 6px 1px black',
+      },
+      colors: {
+        neoblue: '#7df9ff',
+        neogreen: '#2fff2f',
       },
       backgroundImage: {
         'gradient-radial':
