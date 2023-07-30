@@ -24,6 +24,12 @@ export default function HabitPage() {
   const [info, setInfo] = React.useState('');
 
   React.useEffect(() => {
+    if (user == null) {
+      router.push('/');
+    }
+  }, [user]);
+
+  React.useEffect(() => {
     getHabitData();
   }, []);
 
@@ -34,7 +40,7 @@ export default function HabitPage() {
   const getHabitData = async () => {
     let { result, error } = await getSingleHabit(user.uid, id);
     if (error) {
-      return console.log('error', error);
+      return console.log('error');
     }
     setData(result);
   };
