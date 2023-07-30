@@ -88,7 +88,7 @@ export default function HabitPage() {
   };
 
   return (
-    <main className="flex min-h-screen justify-between flex-col max-w-2xl   p-4">
+    <main className="flex min-h-screen justify-between flex-col max-w-2xl m-auto  p-4">
       <Navbar />
       {info.length > 0 ? (
         <div className=" flex flex-col justify-center text-center border-4 p-2 bg-neoyellow border-black rounded-md shadow-shadz">
