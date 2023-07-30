@@ -71,3 +71,42 @@ hr {
   border: 1px solid var(--input-border);
   border-radius: 8px;
 } */
+
+.test {
+  animation-name: animate-pop;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.delay0 {
+  animation-delay: 0.05s;
+}
+.delay1 {
+  animation-delay: 0.1s;
+}
+.delay2 {
+  animation-delay: 0.15s;
+}
+.delay3 {
+  animation-delay: 0.2s;
+}
+.delay4 {
+  animation-delay: 0.25s;
+}
+.delay5 {
+  animation-delay: 0.3s;
+}
+.delay6 {
+  animation-delay: 0.35s;
+}
+
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}

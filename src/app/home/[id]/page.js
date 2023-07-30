@@ -12,6 +12,7 @@ import getDate from '@/app/utilities/getDate';
 import splitArrayIntoGroups from '@/app/utilities/splitArrayIntoGroups';
 import GoAgainWrapper from '@/app/components/goAgainWrapper';
 import HabitInfo from '@/app/components/habitInfo';
+import Spinner from '@/app/components/spinner';
 
 export default function HabitPage() {
   const { user } = useAuthContext();
@@ -19,6 +20,8 @@ export default function HabitPage() {
   const [dates, setDates] = React.useState([]);
   const [data, setData] = React.useState({});
   const [updated, setUpdated] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+  const [info, setInfo] = React.useState('');
 
   React.useEffect(() => {
     getHabitData();
@@ -39,9 +42,14 @@ export default function HabitPage() {
   const getDates = async () => {
     let { result, error } = await getDatesFromHabits(user.uid, id);
     if (error) {
-      return console.log(error);
+      console.log('Something went wrong');
+      return;
     }
-
+    if (result.length == 0) {
+      setInfo('Your progress will appear here.');
+      setLoading(false);
+      return;
+    }
     let group = splitArrayIntoGroups(result, 7);
     setDates(group);
 
@@ -56,6 +64,7 @@ export default function HabitPage() {
       );
       setUpdated(true);
     }
+    setLoading(false);
     // else no new dates to add
     return;
   };
@@ -81,7 +90,15 @@ export default function HabitPage() {
   return (
     <main className="flex min-h-screen justify-between flex-col max-w-2xl m-auto p-4">
       <Navbar />
+      {info.length > 0 ? (
+        <div className="flex flex-col text-center">{info}</div>
+      ) : (
+        ''
+      )}
+      {loading ? <Spinner /> : ''}
+
       <GoAgainWrapper dates={dates} />
+
       <HabitInfo
         data={data}
         id={id}

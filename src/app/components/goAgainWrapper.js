@@ -6,7 +6,7 @@ export default function GoAgainWrapper({ dates }) {
       {dates.map((innerArray, outerIndex) => (
         <div className="flex flex-row my-4" key={outerIndex}>
           {innerArray.map((d, innerIndex) => (
-            <GoAgainLetter key={d.id} d={d} />
+            <GoAgainLetter key={d.id} d={d} innerIndex={innerIndex} />
           ))}
         </div>
       ))}

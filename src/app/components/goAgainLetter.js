@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import DialogModal from './dialogModal';
 
-export default function GoAgainLetter({ d }) {
+export default function GoAgainLetter({ d, innerIndex }) {
   const [isOpened, setIsOpened] = useState(false);
   return (
-    <div className="mx-2 hover:cursor-pointer " key={d.id}>
+    <div
+      className={`mx-2 hover:cursor-pointer opacity-0 test delay${innerIndex}`}
+      key={d.id}
+    >
       {d.status == true ? (
         <p
           onClick={() => setIsOpened(true)}
-          className="font-bold text-4xl text-neotext "
+          className="font-bold text-4xl text-neotext  "
         >
           {d.letter}
         </p>
