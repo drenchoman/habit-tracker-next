@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { BsArrowLeft } from 'react-icons/Bs';
+import { BsArrowLeft } from 'react-icons/bs';
 export default function GoBack() {
   const router = useRouter();
   return (

@@ -1,7 +1,7 @@
 'use client';
 import { FiEdit } from 'react-icons/fi';
 import Link from 'next/link';
-import { PiFireBold } from 'react-icons/Pi';
+import { PiFireBold } from 'react-icons/pi';
 
 export default function HabitInfo({ data, id, weeks, dates }) {
   const totalDays = dates

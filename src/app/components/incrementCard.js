@@ -1,5 +1,5 @@
-import { ImLoop2 } from 'react-icons/Im';
-import { TiTick } from 'react-icons/Ti';
+import { ImLoop2 } from 'react-icons/im';
+import { TiTick } from 'react-icons/ti';
 export default function IncrementCard({
   completed,
   count,

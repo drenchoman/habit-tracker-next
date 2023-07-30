@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import checkStreakContinues from '../utilities/checkStreakContinues';
 import IncrementCard from './incrementCard';
 import Link from 'next/link';
-import { PiFireBold } from 'react-icons/Pi';
+import { PiFireBold } from 'react-icons/pi';
 
 export default function IncrementHabit({ habit }) {
   const { user } = useAuthContext();
