@@ -1,6 +1,7 @@
 import React from 'react';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import firebase_app from '../firebase/config';
+import { MoonLoader } from 'react-spinners';
 
 const auth = getAuth(firebase_app);
 
@@ -25,7 +26,13 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
   return (
     <AuthContext.Provider value={{ user }}>
-      {loading ? <div>Loading...</div> : children}
+      {loading ? (
+        <div className="flex min-h-screen flex-col items-center justify-center  p-8">
+          <MoonLoader />
+        </div>
+      ) : (
+        children
+      )}
     </AuthContext.Provider>
   );
 };

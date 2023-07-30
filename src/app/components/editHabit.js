@@ -92,7 +92,7 @@ export default function EditHabit({ id }) {
         />
       </div>
       <div className="flex flex-col items-center my-2">
-        <button className="border-black bg-neobackground border-4 rounded-md shadow-shadz my-2 mx-4 py-2 px-4">
+        <button className="border-black bg-neoblue border-4 rounded-md shadow-shadz my-2 mx-4 py-2 px-4">
           Update
         </button>
       </div>
