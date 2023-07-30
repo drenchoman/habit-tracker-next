@@ -8,7 +8,7 @@ export default function Navbar() {
       </Link>
 
       <Link passHref href="/home/add">
-        <button className="border-black text-xl bg-neocard border-4 rounded-full py-2 px-4 m-2">
+        <button className="border-black text-xl bg-neocard border-4 rounded-md px-2 m-2 shadow-shadz">
           +
         </button>
       </Link>
