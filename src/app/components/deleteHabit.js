@@ -1,8 +1,19 @@
 'use client';
 import DialogModal from './dialogModal';
 import { useState } from 'react';
-export default function DeleteHabit() {
+import deleteDocument from '../firebase/firestore/deleteHabit';
+import { useRouter } from 'next/navigation';
+
+export default function DeleteHabit({ userid, habitid }) {
   const [isOpened, setIsOpened] = useState(false);
+  const router = useRouter();
+  const deleteHabit = async () => {
+    const { result, error } = await deleteDocument(userid, habitid);
+    if (error) {
+      console.log('Something went wrong');
+    }
+    router.push('/home');
+  };
 
   return (
     <>
@@ -20,7 +31,7 @@ export default function DeleteHabit() {
       >
         <div className="flex flex-col items-center">
           <button
-            type="button"
+            onClick={() => deleteHabit()}
             className="border-black bg-neobackground border-4 rounded-md shadow-shadz my-2 mx-4 py-2 px-4"
           >
             Yes

@@ -96,7 +96,7 @@ export default function EditHabit({ id }) {
         <button className="border-black bg-neoblue border-4 rounded-md shadow-shadz my-2 mx-4 py-2 px-4">
           Update
         </button>
-        <DeleteHabit />
+        <DeleteHabit userid={user.uid} habitid={id} />
       </div>
     </form>
   );
