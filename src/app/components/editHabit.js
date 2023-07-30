@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import updateHabit from '../firebase/firestore/updateHabit';
-import getDate from '../utilities/getDate';
 import { useRouter } from 'next/navigation';
 import getSingleHabit from '../firebase/firestore/getSingleHabit';
 import DeleteHabit from './deleteHabit';
