@@ -42,7 +42,8 @@ export default function AddHabit() {
         </label>
         <input
           onChange={(e) => setName(e.target.value)}
-          className="text-black placeholder:black"
+          required
+          className="p-2 my-1 border-4 border-black rounded-md"
           name="name"
           id="name"
           type="text"
@@ -53,8 +54,9 @@ export default function AddHabit() {
           Description
         </label>
         <input
+          required
           onChange={(e) => setDesc(e.target.value)}
-          className="text-black placeholder:black"
+          className="p-2 my-1 border-4 border-black rounded-md"
           name="desc"
           id="desc"
           type="text"
@@ -65,9 +67,10 @@ export default function AddHabit() {
           Frequency
         </label>
         <input
+          required
           onChange={(e) => setFreq(e.target.value)}
           placeholder="How many times per day?"
-          className="text-black"
+          className="p-2 my-1 border-4 border-black rounded-md"
           name="frequency"
           id="frequency"
           type="number"

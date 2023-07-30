@@ -32,8 +32,7 @@ export default function SignIn() {
         <input
           onChange={(e) => setEmail(e.target.value)}
           placeholder="example@example.com"
-          className="
-       p-2 my-1"
+          className="p-2 my-1 border-4 border-black rounded-md"
           name="email"
           type="email"
           id="email"
@@ -44,7 +43,7 @@ export default function SignIn() {
           Password
         </label>
         <input
-          className="p-2 my-1"
+          className="p-2 my-1 border-4 border-black rounded-md"
           onChange={(e) => setPassword(e.target.value)}
           name="password"
           type="password"

@@ -5,6 +5,7 @@ import updateHabit from '../firebase/firestore/updateHabit';
 import getDate from '../utilities/getDate';
 import { useRouter } from 'next/navigation';
 import getSingleHabit from '../firebase/firestore/getSingleHabit';
+import DeleteHabit from './deleteHabit';
 
 export default function EditHabit({ id }) {
   const { user } = useAuthContext();
@@ -57,7 +58,7 @@ export default function EditHabit({ id }) {
         </label>
         <input
           onChange={(e) => setName(e.target.value)}
-          className="text-black placeholder:black"
+          className="p-2 my-1 border-4 border-black rounded-md"
           name="name"
           id="name"
           value={name}
@@ -70,7 +71,7 @@ export default function EditHabit({ id }) {
         </label>
         <input
           onChange={(e) => setDesc(e.target.value)}
-          className="text-black placeholder:black"
+          className="p-2 my-1 border-4 border-black rounded-md"
           name="desc"
           id="desc"
           value={desc}
@@ -84,7 +85,7 @@ export default function EditHabit({ id }) {
         <input
           onChange={(e) => setFreq(e.target.value)}
           placeholder="How many times a day you want to perform this habit?"
-          className="text-black"
+          className="p-2 my-1 border-4 border-black rounded-md"
           name="frequency"
           value={freq}
           id="frequency"
@@ -95,6 +96,7 @@ export default function EditHabit({ id }) {
         <button className="border-black bg-neoblue border-4 rounded-md shadow-shadz my-2 mx-4 py-2 px-4">
           Update
         </button>
+        <DeleteHabit />
       </div>
     </form>
   );

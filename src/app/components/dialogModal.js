@@ -44,7 +44,11 @@ export default function DialogModal({
     >
       <h3 className="font-bold">{title}</h3>
       {children}
-      <button className="absolute right-3 bottom-2" onClick={onClose}>
+      <button
+        type="button"
+        className="absolute right-3 bottom-2"
+        onClick={onClose}
+      >
         Close
       </button>
     </dialog>

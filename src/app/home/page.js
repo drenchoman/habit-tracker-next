@@ -18,17 +18,17 @@ export default function Admin() {
     if (user == null) {
       router.push('/');
     } else {
-      const getHab = async () => {
-        const { result, error } = await getHabits(user.uid);
-        if (error) {
-          return console.log('errpr', error);
-        }
-        setHabits(result);
-      };
-      // may have to be await getHab?
-      getHab();
+      getAllHabits();
     }
   }, [user]);
+
+  const getAllHabits = async () => {
+    const { result, error } = await getHabits(user.uid);
+    if (error) {
+      return console.log('Something went wrong');
+    }
+    setHabits(result);
+  };
 
   return (
     <main className="flex min-h-screen flex-col max-w-2xl m-auto p-4">

@@ -15,6 +15,7 @@ module.exports = {
         neogreen: '#2fff2f',
         neocard: '#ffb2ef',
         neotext: '#BAFca2',
+        neoyellow: '#fdfd96',
         neobackground: 'rgba(246, 90, 79, 255)',
       },
       backgroundImage: {
