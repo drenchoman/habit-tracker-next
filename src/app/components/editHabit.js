@@ -40,7 +40,8 @@ export default function EditHabit({ id }) {
     const { result, error } = await updateHabit(user.uid, id, data);
     setLoading(false);
     if (error) {
-      return console.log(error);
+      console.log('Something went wrong');
+      return;
     }
     router.push('/home');
   };
