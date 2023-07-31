@@ -80,7 +80,7 @@ export default function HabitPage() {
 
     let data = {
       status: false,
-      notes: 'auto-added',
+      notes: 'Missed',
       date,
       timestamp,
     };

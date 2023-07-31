@@ -75,9 +75,18 @@ export default function IncrementHabit({ habit }) {
 
     let data = { status: true, notes: 'test', date, timestamp };
 
+    // Update current streak
     await updateHabit(user.uid, habit.id, {
       currentStreak: habit.currentStreak + 1,
     });
+
+    // update highest streak
+
+    if (habit.currentSteak > habit.highestStreak) {
+      await updateHabit(user.uid, habit.id, {
+        highestStreak: habit.currentStreak,
+      });
+    }
 
     const { result, error } = await addHabitEntry(
       user.uid,

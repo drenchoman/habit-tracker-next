@@ -20,6 +20,7 @@ export default function AddHabit() {
       description: desc,
       frequency: freq,
       currentStreak: 0,
+      highestStreak: 0,
       date,
       timestamp,
     };
