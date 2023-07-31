@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import DialogModal from './dialogModal';
+import sliceDate from '../utilities/sliceDate';
 
 export default function GoAgainLetter({ d, innerIndex }) {
   const [isOpened, setIsOpened] = useState(false);
+
   return (
     <div
       className={`mx-2 hover:cursor-pointer opacity-0 test delay${innerIndex}`}
@@ -29,7 +31,7 @@ export default function GoAgainLetter({ d, innerIndex }) {
         onClose={() => setIsOpened(false)}
       >
         <div>
-          <p>{d.date}</p>
+          <p>{sliceDate(d.date)}</p>
 
           {d.status == true ? <p>Achieved</p> : <p>Missed</p>}
         </div>
