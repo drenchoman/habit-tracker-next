@@ -14,7 +14,6 @@ export default function HabitInfo({ data, id, weeks, dates }) {
     )
     .map((x) => x.length)
     .reduce((a, b) => a + b, 0);
-  // let te = t.map((x) => x.length).reduce((a, b) => a + b, 0);
   const daysmissed = totalDays - daysAchieved;
 
   return (
@@ -24,8 +23,8 @@ export default function HabitInfo({ data, id, weeks, dates }) {
           <FiEdit />
         </Link>
       </div>
-      <h2 className="text-2xl font-bold my-1">{data.name}</h2>
-      <div className="flex justify-between">
+      <h2 className="text-2xl font-bold my-1 mr-5">{data.name}</h2>
+      <div className="flex justify-between my-1">
         <p>{data.description}</p>
         <div className="flex justify-center items-center">
           <PiFireBold size={24} />
@@ -34,11 +33,14 @@ export default function HabitInfo({ data, id, weeks, dates }) {
       </div>
       <hr></hr>
 
-      <div className="flex justify-between flex-wrap">
-        <p className="text-center">Weeks: {weeks}</p>
-        <p className="text-center">Days: {totalDays}</p>
-        <p className="text-center">Achieved: {daysAchieved}</p>
-        <p className="text-center">Missed: {daysmissed}</p>
+      <div className="flex justify-evenly flex-wrap">
+        <p className="text-center mx-1">Weeks: {weeks}</p>
+        <p className="text-center mx-1">Days: {totalDays}</p>
+        <p className="text-center mx-1">Achieved: {daysAchieved}</p>
+        <p className="text-center mx-1">Missed: {daysmissed}</p>
+        <p className="text-center mx-1">
+          Highest Streak: {data.highestStreak}
+        </p>
       </div>
     </div>
   );
