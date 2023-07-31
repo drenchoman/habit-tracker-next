@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import signUp from '../firebase/signup';
-import Link from 'next/link';
 
 export default function Signup() {
   const [email, setEmail] = useState('');
@@ -17,8 +16,6 @@ export default function Signup() {
     }
 
     // else successful
-    console.log(result);
-    // return router.push('/admin');
   };
 
   return (
@@ -31,6 +28,7 @@ export default function Signup() {
           Email
         </label>
         <input
+          required
           onChange={(e) => setEmail(e.target.value)}
           placeholder="example@example.com"
           className="p-2 my-1 border-4 border-black rounded-md"
@@ -44,6 +42,7 @@ export default function Signup() {
           Password
         </label>
         <input
+          required
           className="p-2 my-1 border-4 border-black rounded-md"
           onChange={(e) => setPassword(e.target.value)}
           name="password"
