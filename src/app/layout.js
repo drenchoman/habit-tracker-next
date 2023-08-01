@@ -8,7 +8,21 @@ import { AuthContextProvider } from './context/AuthContext';
 export const metadata = {
   title: 'Go Again',
   description: 'A simple habit tracker. Add. Do. Go Again.',
+  icons: [
+    {
+      rel: 'icon',
+      href: '/icon.ico',
+      type: 'image/ico',
+      sizes: '32x32',
+    },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      url: '/apple-icon.png',
+    },
+  ],
 };
+
 const inter = Inter({ subsets: ['latin'] });
 
 const lexend = Lexend_Mega({
