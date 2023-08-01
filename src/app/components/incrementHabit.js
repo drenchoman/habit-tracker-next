@@ -82,9 +82,9 @@ export default function IncrementHabit({ habit }) {
 
     // update highest streak
 
-    if (habit.currentSteak > habit.highestStreak) {
+    if (habit.currentSteak + 1 > habit.highestStreak) {
       await updateHabit(user.uid, habit.id, {
-        highestStreak: habit.currentStreak,
+        highestStreak: habit.currentStreak + 1,
       });
     }
 
