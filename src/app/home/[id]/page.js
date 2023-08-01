@@ -90,7 +90,6 @@ export default function HabitPage() {
     if (error) {
       return console.log(error);
     }
-    // console.log(result);
   };
 
   return (
