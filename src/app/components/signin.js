@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import signIn from '../firebase/signin';
+import ForgotPassword from './forgotPassword';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -51,6 +52,7 @@ export default function SignIn() {
           autoComplete="on"
         />
       </div>
+      <ForgotPassword />
       {error ? <span className="text-center">{error}</span> : ''}
       <div className="flex flex-col items-center">
         <button
