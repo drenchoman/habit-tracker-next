@@ -12,6 +12,7 @@ import getDate from '@/app/utilities/getDate';
 import splitArrayIntoGroups from '@/app/utilities/splitArrayIntoGroups';
 import GoAgainWrapper from '@/app/components/goAgainWrapper';
 import HabitInfo from '@/app/components/habitInfo';
+import sortArrayByTimestamp from '@/app/utilities/sortArrayByTimestamp';
 import Spinner from '@/app/components/spinner';
 
 export default function HabitPage() {
@@ -56,7 +57,8 @@ export default function HabitPage() {
       setLoading(false);
       return;
     }
-    let group = splitArrayIntoGroups(result, 7);
+
+    let group = splitArrayIntoGroups(sortArrayByTimestamp(result), 7);
     setDates(group);
 
     let converted = convertDatesInRange(result[0].date);
