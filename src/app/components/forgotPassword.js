@@ -12,7 +12,7 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col mt-3 items-center">
       <p
         onClick={() => setIsOpened(true)}
         className="text-sm my-1 hover:cursor-pointer hover:underline"
@@ -32,7 +32,7 @@ export default function ForgotPassword() {
               className="p-2 my-1 border-4 border-black rounded-md"
               name="email"
               type="email"
-              id="email"
+              id="emailreset"
             />
           </div>
           <div className="flex flex-col content-center">
