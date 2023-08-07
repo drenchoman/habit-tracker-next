@@ -110,8 +110,8 @@ export default function IncrementHabit({ habit }) {
         <div className="flex flex-row justify-between  my-1 p-2">
           <h3 className="text-xl font-bold mr-8px">{habit.name}</h3>
           <div className="flex justify-center items-center">
-            <PiFireBold size={36} />
-            <span className="text-2xl mx-1"> {streak}</span>
+            <PiFireBold size={24} />
+            <span className="text-l mx-1"> {streak}</span>
           </div>
         </div>
         <IncrementCard

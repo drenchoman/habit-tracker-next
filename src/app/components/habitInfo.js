@@ -28,7 +28,7 @@ export default function HabitInfo({ data, id, weeks, dates }) {
         <p>{data.description}</p>
         <div className="flex justify-center items-center">
           <PiFireBold size={24} />
-          <span className="text-1xl mx-1"> {data.currentStreak}</span>
+          <span className="text-l mx-1"> {data.currentStreak}</span>
         </div>
       </div>
       <hr></hr>
