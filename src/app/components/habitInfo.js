@@ -19,7 +19,7 @@ export default function HabitInfo({ data, id, weeks, dates }) {
   return (
     <div className="flex flex-col relative border-4 p-2 bg-neocard  border-black rounded-md shadow-shadz">
       <div className="flex flex-row absolute right-2 top-4">
-        <Link href={`/home/${id}/edit`}>
+        <Link passHref href={`/home/${id}/edit`}>
           <FiEdit />
         </Link>
       </div>
