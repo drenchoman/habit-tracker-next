@@ -22,6 +22,9 @@ module.exports = {
       padding: {
         onepx: '1px',
       },
+      margin: {
+        twopx: '2.5px',
+      },
       backgroundImage: {
         'gradient-radial':
           'radial-gradient(var(--tw-gradient-stops))',
