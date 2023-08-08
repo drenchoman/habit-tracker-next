@@ -102,11 +102,11 @@ export default function IncrementHabit({ habit }) {
   };
 
   return (
-    <Link passHref href={`/home/${habit.id}`}>
-      <div
-        className="flex flex-col my-4 border-4 border-black rounded-md bg-neocard  shadow-shadz"
-        key={habit.id}
-      >
+    <div
+      className="flex flex-col my-4 border-4 border-black rounded-md bg-neocard  shadow-shadz"
+      key={habit.id}
+    >
+      <Link passHref href={`/home/${habit.id}`}>
         <div className="flex flex-row justify-between  my-1 p-2">
           <h3 className="text-xl font-bold mr-8px">{habit.name}</h3>
           <div className="flex justify-center items-center">
@@ -114,13 +114,13 @@ export default function IncrementHabit({ habit }) {
             <span className="text-l mx-1"> {streak}</span>
           </div>
         </div>
-        <IncrementCard
-          completed={completed}
-          count={count}
-          habit={habit}
-          updateCount={updateCount}
-        />
-      </div>
-    </Link>
+      </Link>
+      <IncrementCard
+        completed={completed}
+        count={count}
+        habit={habit}
+        updateCount={updateCount}
+      />
+    </div>
   );
 }
