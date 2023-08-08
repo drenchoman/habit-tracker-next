@@ -7,20 +7,20 @@ export default function GoAgainLetter({ d, innerIndex }) {
 
   return (
     <div
-      className={`mx-2 hover:cursor-pointer opacity-0 test delay${innerIndex}`}
+      className={`mx-2 hover:cursor-pointer opacity-0 test delay${innerIndex} bg-neocontrast shadow-shadz  rounded-md`}
       key={d.id}
     >
       {d.status == true ? (
         <p
           onClick={() => setIsOpened(true)}
-          className="font-bold text-4xl text-neotext  "
+          className="font-bold text-4xl text-neotext hover:text-neobackground px-onepx "
         >
           {d.letter}
         </p>
       ) : (
         <p
           onClick={() => setIsOpened(true)}
-          className={`font-bold text-4xl opacity-25 text-neotext `}
+          className={`font-bold text-4xl opacity-25 hover:text-neobackground  text-neotext px-onepx  `}
         >
           {d.letter}
         </p>

@@ -106,15 +106,15 @@ export default function IncrementHabit({ habit }) {
       className="flex flex-col my-4 border-4 border-black rounded-md bg-neocard  shadow-shadz"
       key={habit.id}
     >
-      <div className="flex flex-row justify-between  my-1 p-2">
-        <h3 className="text-xl font-bold mr-8px">
-          <Link href={`/home/${habit.id}`}>{habit.name}</Link>
-        </h3>
-        <div className="flex justify-center items-center">
-          <PiFireBold size={36} />
-          <span className="text-2xl mx-1"> {streak}</span>
+      <Link passHref href={`/home/${habit.id}`}>
+        <div className="flex flex-row justify-between  my-1 p-2">
+          <h3 className="text-xl font-bold mr-8px">{habit.name}</h3>
+          <div className="flex justify-center items-center">
+            <PiFireBold size={24} />
+            <span className="text-l mx-1"> {streak}</span>
+          </div>
         </div>
-      </div>
+      </Link>
       <IncrementCard
         completed={completed}
         count={count}

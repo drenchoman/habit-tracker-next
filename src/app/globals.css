@@ -103,3 +103,29 @@ hr {
     transform: scale(1, 1);
   }
 }
+
+/* .text-neotext::after {
+  content: '';
+  width: 40px;
+  height: 30px;
+  background-color: #acc8e5;
+  position: absolute;
+  border-radius: 100%;
+  top: 0;
+  left: -0.35rem;
+  z-index: -1;
+  display: flex;
+}
+
+.text-neotext::before {
+  content: '';
+  width: 40px;
+  height: 30px;
+  background-color: #acc8e5;
+  position: absolute;
+  border-radius: 100%;
+  bottom: 0rem;
+  right: -0.35rem;
+  z-index: -1;
+  display: flex;
+} */
