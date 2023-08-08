@@ -17,6 +17,10 @@ module.exports = {
         neotext: '#BAFca2',
         neoyellow: '#fdfd96',
         neobackground: 'rgba(246, 90, 79, 255)',
+        neocontrast: '#acc8e5',
+      },
+      padding: {
+        onepx: '1px',
       },
       backgroundImage: {
         'gradient-radial':

@@ -104,7 +104,7 @@ hr {
   }
 }
 
-.text-neotext::after {
+/* .text-neotext::after {
   content: '';
   width: 40px;
   height: 30px;
@@ -128,4 +128,4 @@ hr {
   right: -0.35rem;
   z-index: -1;
   display: flex;
-}
+} */
