@@ -10,14 +10,11 @@ export default function ForgotPassword() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log('sending reset', email);
-    if (email.length == 0) {
-      setResult('Please enter your email');
-      return;
-    }
     let { result, error } = await resetpassword(email);
 
     if (error) {
-      console.log(error);
+      setResult('Something went wrong');
+      return;
     }
     setResult('Check your email! It may be in spam.');
   };
@@ -56,8 +53,8 @@ export default function ForgotPassword() {
             </button>
           </div>
           {result ? (
-            <div>
-              <span>{result}</span>
+            <div className="flex flex-col text-center my-4">
+              <span className="text-sm">{result}</span>
             </div>
           ) : (
             ''
