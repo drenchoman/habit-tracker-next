@@ -7,7 +7,7 @@ export default async function forgotPassword(email) {
   let result = null,
     error = null;
   try {
-    result = sendPasswordResetEmail(auth, email);
+    result = await sendPasswordResetEmail(auth, email);
   } catch (e) {
     error = e.message;
     return { result, error };
