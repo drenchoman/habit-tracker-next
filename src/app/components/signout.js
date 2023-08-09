@@ -7,7 +7,10 @@ export default function Signout() {
   };
 
   return (
-    <div className="flex justify-end" onClick={handleClick}>
+    <div
+      className="flex justify-end hover:cursor-pointer"
+      onClick={handleClick}
+    >
       <BiLogOut size={36} />
     </div>
   );

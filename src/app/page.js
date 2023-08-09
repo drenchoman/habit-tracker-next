@@ -19,10 +19,13 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center  p-8">
-      <h1 className="text-4xl py-2 text-center">Go Again</h1>
-      <p className="my-2  text-center w-80">
-        Your simple habit tracker. Add. Do. Go Again.
+      <h1 className=" text-4xl font-bold p-2 my-2 border-4 bg-neoyellow border-black rounded-md shadow-shadz">
+        Go Again
+      </h1>
+      <p className="my-1  text-center w-80">
+        Your simple habit tracker
       </p>
+      <p className="my-1  text-center w-80">Add. Do. Go Again.</p>
       <div className="flex  flex-row items-center">
         <button className="border-black bg-neocard border-4 rounded-md shadow-shadz py-2 px-4 m-2">
           <Link href="/signin"> Sign in </Link>
