@@ -10,7 +10,7 @@ export async function metadata({}) {
     description: 'A simple habit tracker. Add. Do. Go Again.',
     icons: [
       {
-        rel: 'icon',
+        rel: 'favicon',
         href: '/favicon.ico',
         type: 'image/ico',
         sizes: 'any',
