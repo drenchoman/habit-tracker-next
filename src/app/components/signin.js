@@ -17,7 +17,7 @@ export default function SignIn() {
     const { result, error } = await signIn(email, password);
     if (error) {
       setError(error);
-      return console.error(error);
+      return;
     } // else successful
     router.push('/home');
   };

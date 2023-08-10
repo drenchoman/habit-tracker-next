@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Go Again
 
-## Getting Started
+![alt Go Again Habit Page](https://res.cloudinary.com/dbyprqeyc/image/upload/v1691700027/Go%20Again/Screenshot_2023-08-11_at_8.38.32_AM_vpzu2y.jpg)
 
-First, run the development server:
+A simple habit tracker built using Next js, Firebase and Tailwind CSS.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+[Click here](https://habit-tracker-next.vercel.app/) to visit
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![alt Tracking progress](https://res.cloudinary.com/dbyprqeyc/image/upload/v1691700058/Go%20Again/Screenshot_2023-08-11_at_8.40.44_AM_lmfivw.jpg)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Design
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Go Again uses a Neo-Brutalist design which I have come across a few times on the web.
+I wanted to give this style a try and I was pretty happy with how it turned out.
+[This article](https://bootcamp.uxdesign.cc/how-can-i-design-in-the-neo-brutalism-style-d85c458042de) was a really helpful with the colour scheme and styling some of the components such as the cards and buttons.
 
-## Learn More
+## Tech
 
-To learn more about Next.js, take a look at the following resources:
+This was my first time using Firebase in a project. I used Firebase for Authentication and my DB.
+I used [this guide](https://www.freecodecamp.org/news/create-full-stack-app-with-nextjs13-and-firebase/) for initial set up and then learnt how to use Firbase as I went.
+While a little bit confusing at first, I eventually got the hang of it and was able to build all of the CRUD functionality I needed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+I also used Tailwind for the first time. I enjoyed using it and it was quite easy to keep my components consistent across the app.
+I traditionally use vanilla css with css variables so it wasn't too big of a jump into Tailwind. The [Tailwind docs](https://tailwindcss.com/docs/installation) are great and if you have a bit of experience with CSS then it is easy enough to search for the property you are looking for.
+Tailwind is something I would use again and I can definetly see its appeal to large projects worked on by multiple people.

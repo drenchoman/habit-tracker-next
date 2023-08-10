@@ -7,7 +7,7 @@ export default function Signout() {
   };
 
   return (
-    <div className="flex justify-between hover:cursor-pointer">
+    <div className="flex justify-between my-2 hover:cursor-pointer">
       <a
         rel="noopener"
         href="https://github.com/drenchoman/habit-tracker-next"
