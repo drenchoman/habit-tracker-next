@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Lexend_Mega } from 'next/font/google';
 import { AuthContextProvider } from './context/AuthContext';
+import { Analytics } from '@vercel/analytics/react';
 
 export async function metadata({}) {
   return {
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={lexend.className}>
         <AuthContextProvider>{children}</AuthContextProvider>
+        <Analytics />
       </body>
     </html>
   );
