@@ -9,6 +9,7 @@ import getHabits from '../firebase/firestore/getHabits';
 import GetStarted from '../components/getStarted';
 import IncrementHabitWrapper from '../components/incrementHabitWrapper';
 import Spinner from '../components/spinner';
+import sortArrayByTimestamp from '../utilities/sortArrayByTimestamp';
 
 export default function Admin() {
   const { user } = useAuthContext();
@@ -30,7 +31,7 @@ export default function Admin() {
     if (error) {
       return console.log('Something went wrong');
     }
-    setHabits(result);
+    setHabits(sortArrayByTimestamp(result));
   };
 
   if (loading) {
