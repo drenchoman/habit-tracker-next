@@ -66,6 +66,7 @@ export default function HabitPage() {
     let datesToCompare = result.map((r) => r.date);
 
     let intersection = filterUniqueValues(converted, datesToCompare);
+
     if (intersection.length >= 1) {
       await intersection.forEach((date) =>
         addDateEntryToHabit(id, date)
@@ -77,8 +78,10 @@ export default function HabitPage() {
     return;
   };
 
+  // push actual date rather than todays timestamp when adding entries
   const addDateEntryToHabit = async (id, date) => {
     let { timestamp } = getDate();
+    console.log(date);
 
     let data = {
       status: false,
