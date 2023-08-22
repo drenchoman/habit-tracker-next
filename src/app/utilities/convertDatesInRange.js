@@ -8,7 +8,6 @@ export default function convertDatesInRange(initialDate) {
   let { date } = getDate();
   let endDate = convertDate(date);
   let range = getDatesInRange(startDate, endDate);
-  console.log(range);
   let converted = range.map((r) => extractDate(r));
   return converted;
 }
