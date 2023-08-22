@@ -14,6 +14,7 @@ import GoAgainWrapper from '@/app/components/goAgainWrapper';
 import HabitInfo from '@/app/components/habitInfo';
 import sortArrayByTimestamp from '@/app/utilities/sortArrayByTimestamp';
 import Spinner from '@/app/components/spinner';
+import getTimestamp from '@/app/utilities/getTimestamp';
 
 export default function HabitPage() {
   const { user } = useAuthContext();
@@ -78,10 +79,9 @@ export default function HabitPage() {
     return;
   };
 
-  // push actual date rather than todays timestamp when adding entries
+  // timestamp == actual date
   const addDateEntryToHabit = async (id, date) => {
-    let { timestamp } = getDate();
-    console.log(date);
+    let timestamp = getTimestamp(date);
 
     let data = {
       status: false,
