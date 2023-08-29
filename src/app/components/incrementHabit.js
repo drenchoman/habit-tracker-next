@@ -61,6 +61,7 @@ export default function IncrementHabit({ habit }) {
       await updateHabit(user.uid, habit.id, {
         currentStreak: 0,
       });
+      setCount(0);
     }
   };
 

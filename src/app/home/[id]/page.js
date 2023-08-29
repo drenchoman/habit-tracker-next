@@ -58,8 +58,11 @@ export default function HabitPage() {
       setLoading(false);
       return;
     }
-
-    let group = splitArrayIntoGroups(sortArrayByTimestamp(result), 7);
+    let sortedByTimeStamp = sortArrayByTimestamp(result);
+    let group = splitArrayIntoGroups(
+      sortArrayByTimestamp(sortedByTimeStamp),
+      7
+    );
     setDates(group);
 
     let converted = convertDatesInRange(result[0].date);
