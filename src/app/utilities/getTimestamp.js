@@ -5,6 +5,6 @@ export default function getTimestamp(date) {
   let m = string.slice(2, 4);
   let d = string.slice(0, 2);
 
-  let datum = new Date(Date.UTC(y, Number(m - 1), d, 2, 2, 2));
+  let datum = new Date(Date.UTC(y, Number(m - 1), d, 2, 2, 2, 2));
   return datum.getTime() / 1000;
 }

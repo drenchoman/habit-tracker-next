@@ -59,7 +59,6 @@ export default function IncrementHabit({ habit }) {
     let continues = checkStreakContinues(yesterday, date, result);
     if (continues == false) {
       setCount(0);
-
       await updateHabit(user.uid, habit.id, {
         currentStreak: 0,
       });
