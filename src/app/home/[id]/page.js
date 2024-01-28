@@ -67,6 +67,7 @@ export default function HabitPage() {
       await intersection.forEach((date) =>
         addDateEntryToHabit(id, date)
       );
+      // triggers page to rerender
       setUpdated(true);
     }
     setLoading(false);
