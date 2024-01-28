@@ -15,6 +15,7 @@ import HabitInfo from '@/app/components/habitInfo';
 import sortArrayByTimestamp from '@/app/utilities/sortArrayByTimestamp';
 import Spinner from '@/app/components/spinner';
 import getTimestamp from '@/app/utilities/getTimestamp';
+import sortAndGroupDates from '@/app/utilities/sortAndGroupDates';
 
 export default function HabitPage() {
   const { user } = useAuthContext();
@@ -53,18 +54,30 @@ export default function HabitPage() {
       console.log('Something went wrong');
       return;
     }
+    // No entries/results
     if (result.length == 0) {
       setInfo('Your progress will appear here.');
       setLoading(false);
       return;
     }
-    let sortedByTimeStamp = sortArrayByTimestamp(result);
-    let group = splitArrayIntoGroups(
-      sortArrayByTimestamp(sortedByTimeStamp),
-      7
-    );
-    setDates(group);
+    setDates(sortAndGroupDates(result));
 
+    await addMissedDates(result);
+  };
+
+  // function sortAndGroupDates(dates) {
+  //   let sortedByTimeStamp = sortArrayByTimestamp(dates);
+
+  //   let group = splitArrayIntoGroups(
+  //     sortArrayByTimestamp(sortedByTimeStamp),
+  //     7
+  //   );
+  //   return group;
+  // }
+
+  // Add entried for missed dates
+
+  async function addMissedDates(result) {
     let converted = convertDatesInRange(result[0].date);
 
     let datesToCompare = result.map((r) => r.date);
@@ -80,7 +93,7 @@ export default function HabitPage() {
     setLoading(false);
     // else no new dates to add
     return;
-  };
+  }
 
   // timestamp == actual date
   const addDateEntryToHabit = async (id, date) => {
