@@ -1,20 +1,17 @@
 'use client';
 import { useAuthContext } from '@/app/context/AuthContext';
 import React from 'react';
-import convertDatesInRange from '@/app/utilities/convertDatesInRange';
 import Navbar from '@/app/components/navbar';
 import { useRouter, useParams } from 'next/navigation';
 import getSingleHabit from '@/app/firebase/firestore/getSingleHabit';
 import getDatesFromHabits from '@/app/firebase/firestore/getDatesFromHabits';
-import filterUniqueValues from '@/app/utilities/filterUniqueDates';
 import addHabitEntry from '@/app/firebase/firestore/addHabitEntry';
-import getDate from '@/app/utilities/getDate';
-import splitArrayIntoGroups from '@/app/utilities/splitArrayIntoGroups';
 import GoAgainWrapper from '@/app/components/goAgainWrapper';
 import HabitInfo from '@/app/components/habitInfo';
-import sortArrayByTimestamp from '@/app/utilities/sortArrayByTimestamp';
+import getMissedDates from '@/app/utilities/getMissedDates';
 import Spinner from '@/app/components/spinner';
 import getTimestamp from '@/app/utilities/getTimestamp';
+import sortAndGroupDates from '@/app/utilities/sortAndGroupDates';
 
 export default function HabitPage() {
   const { user } = useAuthContext();
@@ -53,34 +50,30 @@ export default function HabitPage() {
       console.log('Something went wrong');
       return;
     }
+    // No entries/results
     if (result.length == 0) {
       setInfo('Your progress will appear here.');
       setLoading(false);
       return;
     }
-    let sortedByTimeStamp = sortArrayByTimestamp(result);
-    let group = splitArrayIntoGroups(
-      sortArrayByTimestamp(sortedByTimeStamp),
-      7
-    );
-    setDates(group);
+    setDates(sortAndGroupDates(result));
 
-    let converted = convertDatesInRange(result[0].date);
+    await addMissedDates(result);
+  };
 
-    let datesToCompare = result.map((r) => r.date);
-
-    let intersection = filterUniqueValues(converted, datesToCompare);
-
+  async function addMissedDates(result) {
+    let intersection = getMissedDates(result);
     if (intersection.length >= 1) {
       await intersection.forEach((date) =>
         addDateEntryToHabit(id, date)
       );
+      // triggers page to rerender
       setUpdated(true);
     }
     setLoading(false);
     // else no new dates to add
     return;
-  };
+  }
 
   // timestamp == actual date
   const addDateEntryToHabit = async (id, date) => {
