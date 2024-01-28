@@ -1,18 +1,14 @@
 'use client';
 import { useAuthContext } from '@/app/context/AuthContext';
 import React from 'react';
-import convertDatesInRange from '@/app/utilities/convertDatesInRange';
 import Navbar from '@/app/components/navbar';
 import { useRouter, useParams } from 'next/navigation';
 import getSingleHabit from '@/app/firebase/firestore/getSingleHabit';
 import getDatesFromHabits from '@/app/firebase/firestore/getDatesFromHabits';
-import filterUniqueValues from '@/app/utilities/filterUniqueDates';
 import addHabitEntry from '@/app/firebase/firestore/addHabitEntry';
-import getDate from '@/app/utilities/getDate';
-import splitArrayIntoGroups from '@/app/utilities/splitArrayIntoGroups';
 import GoAgainWrapper from '@/app/components/goAgainWrapper';
 import HabitInfo from '@/app/components/habitInfo';
-import sortArrayByTimestamp from '@/app/utilities/sortArrayByTimestamp';
+import getMissedDates from '@/app/utilities/getMissedDates';
 import Spinner from '@/app/components/spinner';
 import getTimestamp from '@/app/utilities/getTimestamp';
 import sortAndGroupDates from '@/app/utilities/sortAndGroupDates';
@@ -65,25 +61,8 @@ export default function HabitPage() {
     await addMissedDates(result);
   };
 
-  // function sortAndGroupDates(dates) {
-  //   let sortedByTimeStamp = sortArrayByTimestamp(dates);
-
-  //   let group = splitArrayIntoGroups(
-  //     sortArrayByTimestamp(sortedByTimeStamp),
-  //     7
-  //   );
-  //   return group;
-  // }
-
-  // Add entried for missed dates
-
   async function addMissedDates(result) {
-    let converted = convertDatesInRange(result[0].date);
-
-    let datesToCompare = result.map((r) => r.date);
-
-    let intersection = filterUniqueValues(converted, datesToCompare);
-
+    let intersection = getMissedDates(result);
     if (intersection.length >= 1) {
       await intersection.forEach((date) =>
         addDateEntryToHabit(id, date)
